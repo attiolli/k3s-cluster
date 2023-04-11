@@ -1,0 +1,62 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: metallb-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: metallb
+      version: 0.13.9
+      sourceRef:
+        kind: HelmRepository
+        name: metallb
+        namespace: flux-system
+  install:
+    crds: CreateReplace
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    controller:
+      logLevel: debug
+    speaker:
+      tolerateMaster: true
+      logLevel: debug
+      frr:
+        enabled: true
+        image:
+          repository: docker.io/frrouting/frr
+          tag: v7.5.1
+          #tag: v8.4.0
+    crds:
+      enabled: true
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              version: v1
+              kind: DaemonSet
+              name: metallb-speaker
+            patch:
+              - op: add
+                path: /spec/template/spec/initContainers/3
+                value:
+                  name: routes
+                  command:
+                    - /bin/sh
+                    - -c
+                    - |-
+                      ip r add local 10.46.0.0/24 dev lo table local proto 66 scope host || true
+                      ip -6 r add local 2001:67c:1104:c0ff::/112 dev lo table local proto 67 scope host || true
+                  image: alpine
+                  imagePullPolicy: IfNotPresent
+                  securityContext:
+                    capabilities:
+                      add:
+                        - NET_ADMIN

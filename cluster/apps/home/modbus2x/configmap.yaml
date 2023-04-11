@@ -1,0 +1,158 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: modbus2x-config
+  namespace: home
+data:
+  config.yml: |
+    modbus.ouman_h23:
+      devices:
+        ouman_h23:
+          device:
+            manufacturer: Ouman Oy
+            model: H23
+            name: Ouman H23
+            suggested_area: Varasto
+          interface: tcp
+          host: 10.0.60.60
+          port: 8888
+          framing: tcp
+          unit: 1
+          poll_interval: 2
+          tags:
+            ulkolampotila:
+              state: HD201:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:sun-thermometer-outline
+                name: Ulkolämpötila
+                device_class: temperature
+                unit_of_measurement: "°C"
+            L1_menovesi:
+              state: HD203:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer-chevron-up
+                name: L1 menovesi
+                device_class: temperature
+                unit_of_measurement: "°C"
+            L1_paluuvesi:
+              state: HD205:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer-chevron-down
+                name: L1 paluuvesi
+                device_class: temperature
+                unit_of_measurement: "°C"
+            L1_huonelampotila:
+              state: HD207:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer
+                name: L1 Huonelämpötila
+                device_class: temperature
+                unit_of_measurement: "°C"
+            LV_menovesi:
+              state: HD215:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer-chevron-up
+                name: LV Menovesi
+                device_class: temperature
+                unit_of_measurement: "°C"
+            LV_kiertovesi:
+              state: HD217:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer-chevron-up
+                name: LV Kiertovesi
+                device_class: temperature
+                unit_of_measurement: "°C"
+            KL_paluuvesi:
+              state: HD263:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer-chevron-down
+                name: KL Paluuvesi
+                device_class: temperature
+                unit_of_measurement: "°C"
+            KL_menovesi:
+              state: HD267:DINT
+              scale: 0.1
+              precision: 1
+              range: [ -50, 130 ]
+              ha_cfg:
+                icon: mdi:thermometer-chevron-up
+                name: KL Tulovesi
+                device_class: temperature
+                unit_of_measurement: "°C"
+    
+            Huonelampotilan_asetus:
+              state: HD497:DINT
+              rw: true
+              scale: 0.1
+              precision: 1
+              ha_cfg:
+                step: 0.1
+                min: 5
+                max: 35
+            Kotona_poissa_ohjaus:
+              state: HW399:UINT
+              rw: true
+              ha_type: switch
+              ha_cfg:
+                state_off: 0
+                state_on: 1
+    
+            Anturivika_M1_ulkolampotila:
+              state: HW643.0
+            Anturivika_M2_L1_menovesi:
+              state: HW644.0
+            Anturivika_M3_L1_paluuvesi:
+              state: HW645.0
+            Anturivika_M8_LV_menovesi:
+              state: HW650.0
+            Anturivika_M9_LV_kiertovesi:
+              state: HW651.0
+            Anturivika_M4_L1_huonelampotila:
+              state: HW646.0
+            M1_halytys:
+              state: HW654.0
+            M2_halytys:
+              state: HW655.0
+            M3_halytys:
+              state: HW656.0
+            M4_halytys:
+              state: HW657.0
+            M5_halytys:
+              state: HW658.0
+            M6_halytys:
+              state: HW659.0
+            M7_halytys:
+              state: HW660.0
+            M8_halytys:
+              state: HW661.0
+            M9_halytys:
+              state: HW662.0
+            LV_ylarajahalytys:
+              state: HW532.0
+            L1_menoveden_poikkeamahalytys:
+              state: HW533.0
+            L1_paluuvesi_alarajahalytys:
+              state: HW674.0
+    mqtt:
+      disabled: false
