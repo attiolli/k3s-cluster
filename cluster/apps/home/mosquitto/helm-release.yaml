@@ -61,6 +61,13 @@ spec:
         name: mosquitto-config
         mountPath: /mosquitto/config/mosquitto.conf
         subPath: mosquitto.conf
+      secret-file:
+        enabled: true
+        type: secret
+        name: mosquitto-secret
+        subPath: mosquitto_pwd
+        mountPath: /mosquitto/config/mosquitto_pwd
+        readOnly: true      
 
     tolerations:
       - key: "master"
