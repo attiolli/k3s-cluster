@@ -8,7 +8,7 @@ The Git repository contains the following directories under cluster.
 * Bootstrap directory contains a simple Kustomize resource to deploy Flux to an empty cluster.
 * Apps directory is where my common applications are placed.
 
-'''
+´´´
 cluster
 ├── apps
 ├── bootstrap
@@ -17,7 +17,7 @@ cluster
 ├── core
 ├── crds
 └── flux
-'''
+´´´
 
 ## Nodes ##
 
