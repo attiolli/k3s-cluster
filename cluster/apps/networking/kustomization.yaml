@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - metallb-system
-  #- nginx
+  - nginx
   #- unifi

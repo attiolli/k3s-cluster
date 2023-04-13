@@ -46,7 +46,7 @@ spec:
         enabled: true
         type: LoadBalancer
         annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.0.44.111
+          metallb.universe.tf/loadBalancerIPs: 10.0.88.111
         externalTrafficPolicy: Cluster
         ipFamilyPolicy: "SingleStack"
         ipFamilies:
@@ -67,8 +67,8 @@ spec:
               app.kubernetes.io/name: ingress-nginx
               #app.kubernetes.io/instance: nginx
               app.kubernetes.io/component: controller
-      extraArgs:
-        default-ssl-certificate: "networking/oatel.net-tls"
+      #extraArgs:
+      # default-ssl-certificate: "networking/oatel.net-tls"
       resources:
         limits:
           cpu: 2281m
