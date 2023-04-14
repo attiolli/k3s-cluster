@@ -23,6 +23,13 @@ spec:
     nfs:
       server: "10.0.40.12"
       path: "/srv/k8s"
+    mountOptions:
+      - nfsvers=4
+      - tcp
+      - intr
+      - hard
+      - noatime
+      - nodiratime
     storageClass:
       name: nfs-client
       defaultClass: false
