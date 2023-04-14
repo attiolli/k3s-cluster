@@ -5,4 +5,4 @@ resources:
   - namespace.yaml
   - metallb-system
   - nginx
-  #- unifi
+  - unifi
