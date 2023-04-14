@@ -15,7 +15,7 @@ spec:
         kind: HelmRepository
         name: nfs-subdir-external-provisioner-charts
         namespace: flux-system
-      interval: 5m
+      interval: 10m
   values:
     image:
       repository: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
@@ -23,13 +23,6 @@ spec:
     nfs:
       server: "10.0.40.12"
       path: "/srv/k8s"
-    mountOptions:
-      - nfsvers=3
-      - tcp
-      - intr
-      - hard
-      - noatime
-      - nodiratime
     storageClass:
       name: nfs-client
       defaultClass: false
