@@ -7,4 +7,4 @@ resources:
   - secret.sops.yaml
   - helm-release.yaml
   - issuers.yaml
-  - certs
+  #- certs
