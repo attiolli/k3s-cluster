@@ -24,7 +24,7 @@ spec:
       server: "10.0.40.12"
       path: "/srv/k8s"
     mountOptions:
-      - nfsvers=4
+      - nfsvers=3
       - tcp
       - intr
       - hard
