@@ -12,5 +12,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 7Gi
+      storage: 1Gi
   storageClassName: nfs-client
