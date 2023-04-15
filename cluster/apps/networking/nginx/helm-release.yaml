@@ -31,7 +31,7 @@ spec:
     cleanupOnFail: true
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 3
       config:
         hsts: false
         ssl-prefer-server-ciphers: false
