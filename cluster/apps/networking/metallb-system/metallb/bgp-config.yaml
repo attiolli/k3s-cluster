@@ -31,5 +31,4 @@ metadata:
 spec:
   ipAddressPools:
   - ipv4
-  - net40
   aggregationLength: 32
