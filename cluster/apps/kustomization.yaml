@@ -5,4 +5,5 @@ resources:
   - cert-manager
   - echo-server
   - storage
+  - media
   - home
