@@ -66,6 +66,7 @@ spec:
         type: secret
         name: mosquitto-secret
         mountPath: /mosquitto/secret
+        readOly: true
 
     tolerations:
       - key: "master"
