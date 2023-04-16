@@ -61,6 +61,11 @@ spec:
         name: mosquitto-config
         mountPath: /mosquitto/config/mosquitto.conf
         subPath: mosquitto.conf
+      mosquitto-secret:
+        enabled: true
+        type: secret
+        name: mosquitto-secret
+        mountPath: /mosquitto
 
     tolerations:
       - key: "master"
