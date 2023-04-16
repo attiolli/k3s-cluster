@@ -24,6 +24,16 @@ spec:
   avoidBuggyIPs: true
 ---
 apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: net40
+  namespace: metallb-system
+spec:
+  addresses:
+    - 10.0.40.80/29
+  avoidBuggyIPs: true
+---
+apiVersion: metallb.io/v1beta1
 kind: BGPAdvertisement
 metadata:
   name: bgp-other
@@ -31,4 +41,5 @@ metadata:
 spec:
   ipAddressPools:
   - ipv4
+  - net40
   aggregationLength: 32
