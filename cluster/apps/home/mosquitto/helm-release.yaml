@@ -65,7 +65,7 @@ spec:
         enabled: true
         type: secret
         name: mosquitto-secret
-        mountPath: /mosquitto/secret
+        mountPath: /ext_mount/secret
         readOly: true
 
     tolerations:
