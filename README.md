@@ -17,6 +17,12 @@ cluster
 └── flux
 ```
 
+## Network ##
+![net](https://user-images.githubusercontent.com/5729471/232335946-d11a40e4-2990-4911-bce0-496af82779b0.png)
+
+
+
+
 ## Nodes ##
 
 Node   | Hostname | RAM | Storage | Function | OS
