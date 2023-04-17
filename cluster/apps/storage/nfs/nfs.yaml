@@ -22,7 +22,7 @@ spec:
       tag: v4.0.2
     nfs:
       server: "10.0.40.12"
-      path: "/srv/k8s"
+      path: "/srv/k8snvme"
     storageClass:
       name: nfs-client
       defaultClass: false
