@@ -53,7 +53,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: z2m-secret
-            key: pad_id
+            key: pan_id
       ZIGBEE2MQTT_CONFIG_ADVANCED_HOMEASSISTANT_LEGACY_ENTITY_ATTRIBUTES: "true"
       ZIGBEE2MQTT_CONFIG_ADVANCED_LAST_SEEN: ISO_8601_local
       ZIGBEE2MQTT_CONFIG_ADVANCED_LEGACY_API: "false"
