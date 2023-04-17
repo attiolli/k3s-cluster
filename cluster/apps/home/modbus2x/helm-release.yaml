@@ -32,9 +32,17 @@ spec:
     env:
       TZ: "${TZ}"
       MODBUS_DEBUG: yes
-      MODBUS_MQTT_BROKER: mosquitto
-      #MODBUS_MQTT_USERNAME:
-      #MODBUS_MQTT_PASSWORD:
+      MODBUS_MQTT_BROKER: "${SVC_MQTT_ADDR}"
+      MODBUS_MQTT_USERNAME:
+        valueFrom:
+          secretKeyRef:
+            name: mosquitto-secret
+            key: username
+      MODBUS_MQTT_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: mosquitto-secret
+            key: password
       MODBUS_MQTT_PUBLISH_INTERVAL: 15
       MODBUS_HA_EXPIRE_AFTER: 30
 
