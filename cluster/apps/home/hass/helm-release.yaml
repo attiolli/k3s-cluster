@@ -38,6 +38,13 @@ spec:
 
     service:
       main:
+        type: LoadBalancer
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${SVC_HA_ADDR}"
+        externalTrafficPolicy: Local
+        ipFamilyPolicy: "SingleStack"
+        ipFamilies:
+          - IPv4
         ports:
           http:
             port: 8123
