@@ -74,7 +74,10 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: hass-config-v1
+        existingClaim: hass-config-v2
+
+    nodeSelector:
+      kubernetes.io/hostname: "k8s-worker2"
 
     tolerations:
       - key: "master"

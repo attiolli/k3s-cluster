@@ -54,7 +54,7 @@ spec:
       data:
         enabled: true
         mountPath: /data
-        existingClaim: mosquitto-config-v1
+        existingClaim: mosquitto-config-v2
       config:
         enabled: true
         type: configMap

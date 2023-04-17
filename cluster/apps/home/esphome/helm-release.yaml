@@ -75,7 +75,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: esph-config-v1
+        existingClaim: esph-config-v2
 
     tolerations:
       - key: "master"
