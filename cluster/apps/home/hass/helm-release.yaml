@@ -95,7 +95,7 @@ spec:
           enabled: true
           ingressClassName: "nginx"
           hosts:
-            - host: &code-host "hlab-code.${MAIN_DOMAIN}"
+            - host: &code-host "hasscode.${MAIN_DOMAIN}"
               paths:
                 - path: /
                   pathType: Prefix
