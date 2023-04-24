@@ -6,3 +6,4 @@ resources:
   - alert-manager
   - prom-stack
   - grafana
+  - speedtest-exporter
