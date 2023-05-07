@@ -1,0 +1,66 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: syslog
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+    cleanupOnFail: true
+  rollback:
+    timeout: 10m
+    recreate: true
+    cleanupOnFail: true
+  values:
+    image:
+      repository: ghcr.io/linuxserver/syslog-ng
+      tag: 3.38.1
+      pullPolicy: IfNotPresent
+
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${MLB_SYSLOG_ADDR}"
+        ports:
+          syslog:
+            enabled: true
+            port: 5514
+            protocol: UDP
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: syslog-config-v1
+        mountPath: "/config"
+
+    tolerations:
+      - key: "master"
+        operator: "Equal"
+        value: "false"
+        effect: "NoSchedule"
+
+
+    resources:
+      requests:
+        memory: 50M
+      limits:
+        memory: 100M
