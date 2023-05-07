@@ -48,6 +48,14 @@ spec:
             port: 5514
             protocol: UDP
 
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
+
     persistence:
       config:
         enabled: true
