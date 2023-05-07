@@ -41,6 +41,8 @@ spec:
         annotations:
           metallb.universe.tf/loadBalancerIPs: "${MLB_SYSLOG_ADDR}"
         ports:
+          http:
+            enabled: false
           syslog:
             enabled: true
             port: 5514
