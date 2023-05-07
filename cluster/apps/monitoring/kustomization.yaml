@@ -7,3 +7,4 @@ resources:
   - prom-stack
   - grafana
   - speedtest-exporter
+  - syslog
