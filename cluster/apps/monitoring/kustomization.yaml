@@ -8,4 +8,4 @@ resources:
   - grafana
   - speedtest-exporter
   - syslog
-  - influxdb
+    #- influxdb
