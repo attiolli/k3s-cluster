@@ -39,6 +39,14 @@ spec:
           http:
             port: 8086
 
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
+
     persistence:
       config:
         enabled: true
