@@ -87,6 +87,13 @@ spec:
             access: proxy
             isDefault: true
             url: http://prom-prometheus:9090/
+          - name: InfluxDB
+            type: influxdb
+            access: proxy
+            url: http://influxdb:8086/
+            jsonData:
+              organization: default
+              tlsSkipVerify: true
     dashboards:
       default:
         speedtest:
