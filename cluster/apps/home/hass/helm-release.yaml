@@ -34,7 +34,7 @@ spec:
       fullnameOverride: hass
     image:
       repository: ghcr.io/home-assistant/home-assistant
-      tag: 2023.4.1
+      tag: 2023.6
 
     service:
       main:
