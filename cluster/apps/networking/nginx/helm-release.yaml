@@ -59,9 +59,9 @@ spec:
         prometheusRule:
           enabled: false
       topologySpreadConstraints:
-        - maxSkew: 1
+        - maxSkew: 3
           topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: ScheduleAnyway
+          whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:
               app.kubernetes.io/name: ingress-nginx
