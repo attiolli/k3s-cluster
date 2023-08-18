@@ -76,9 +76,6 @@ spec:
         enabled: true
         existingClaim: hass-config-v2
 
-    nodeSelector:
-      kubernetes.io/hostname: "k8s-worker3"
-
     tolerations:
       - key: "master"
         operator: "Equal"
