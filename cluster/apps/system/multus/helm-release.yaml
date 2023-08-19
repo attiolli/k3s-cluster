@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: multus
-      version: 5.0.2
+      version: 5.0.3
       sourceRef:
         kind: HelmRepository
         name: angelnu-charts
@@ -18,11 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-      tag: v4.0.0-alpha
-
-    args:
-      - --multus-conf-file=auto
-      - --multus-log-file=/etc/cni/net.d/multus.d/the-log.log
+      tag: v4.0.2-thick
 
     tolerations:
       - key: "master"
@@ -39,4 +35,6 @@ spec:
         config: /etc/cni/net.d
         bin: /opt/cni/bin
 
-      version: "0.3.1"
+
+    hostPaths:
+      netns: /var/run/netns
