@@ -18,7 +18,11 @@ spec:
   values:
     image:
       repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-      tag: v4.0.2-thick
+      tag: v4.0.0-alpha
+
+    args:
+      - --multus-conf-file=auto
+      - --multus-log-file=/etc/cni/net.d/multus.d/the-log.log
 
     tolerations:
       - key: "master"
@@ -28,13 +32,11 @@ spec:
 
     cni:
       image:
-        repository: ghcr.io/angelnu/cni-plugins
-        tag: 1.3.0
+        repository: ghcr.io/onedr0p/cni-plugins
+        tag: "1.3.0"
 
       paths:
-        config: /etc/cni/net.d
-        bin: /opt/cni/bin
+        configDir: /etc/cni/net.d
+        binDir: /opt/cni/bin
 
-
-    hostPaths:
-      netns: /var/run/netns
+      version: "0.3.1"
