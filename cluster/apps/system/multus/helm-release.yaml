@@ -18,26 +18,23 @@ spec:
   values:
     image:
       repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-      tag: v4.0.0-alpha
-
-    args:
-      - --multus-conf-file=auto
-      - --cni-version=0.3.1
-      - --multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig
-
-    tolerations:
-      - key: "master"
-        operator: "Equal"
-        value: "false"
-        effect: "NoSchedule"
+      tag: v4.0.2-thick
 
     cni:
       image:
-        repository: ghcr.io/onedr0p/cni-plugins
-        tag: "1.3.0"
+        repository: ghcr.io/angelnu/cni-plugins
+        tag: 1.3.0
 
       paths:
-        configDir: /var/lib/rancher/k3s/agent/etc/cni/net.d
-        binDir: /var/lib/rancher/k3s/data/current/bin
+        config: /etc/cni/net.d
+        bin: /opt/cni/bin
 
-      version: "0.3.1"
+    resources:
+      requests:
+        cpu: 5m
+        memory: 64M
+      limits:
+        memory: 64M
+
+    hostPaths:
+      netns: /var/run/netns
