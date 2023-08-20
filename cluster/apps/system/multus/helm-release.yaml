@@ -22,19 +22,14 @@ spec:
 
     args:
       - --multus-conf-file=auto
-      - --multus-log-file=/etc/cni/net.d/multus.d/the-log.log
+      - --cni-version=0.3.1
+      - --multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig
 
     tolerations:
       - key: "master"
         operator: "Equal"
         value: "false"
         effect: "NoSchedule"
-
-    args:
-      - "--multus-conf-file=auto"
-      - "--cni-version=0.3.1"
-      # Add the following arg
-      - "--multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig"
 
     cni:
       image:
