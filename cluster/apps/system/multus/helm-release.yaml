@@ -30,13 +30,19 @@ spec:
         value: "false"
         effect: "NoSchedule"
 
+    args:
+      - "--multus-conf-file=auto"
+      - "--cni-version=0.3.1"
+      # Add the following arg
+      - "--multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig"
+
     cni:
       image:
         repository: ghcr.io/onedr0p/cni-plugins
         tag: "1.3.0"
 
       paths:
-        configDir: /etc/cni/net.d
-        binDir: /opt/cni/bin
+        configDir: /var/lib/rancher/k3s/agent/etc/cni/net.d
+        binDir: /var/lib/rancher/k3s/data/current/bin
 
       version: "0.3.1"
