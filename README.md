@@ -35,4 +35,4 @@ HP Prodesk 400 g1 celeron | k8s-worker3 | 8GB | 256GB SSD | Kube Worker | Debian
 ## Storage ##
 Node   | Hostname | RAM | Storage | Function | OS | vPlatform
 ------ | -------- | --- | ------- | -------- | -- | ---------
-VM on HPE Microserver | nas1 | 1GB | 2x2TB HDD, 2x1TB HDD | NFS Server | Debian 11 (CT) | Proxmox
+VM on HPE Microserver | nas1 | 1GB | 1x250GB nvme, 2x2TB HDD, 2x1TB HDD | NFS Server | Debian 11 (CT) | Proxmox
