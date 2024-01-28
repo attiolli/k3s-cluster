@@ -29,7 +29,7 @@ spec:
   dependsOn:
     - name: mosquitto
       namespace: home
-    - name: csi-driver-nfs
+    - name: csi-driver-nfs2
       namespace: storage
   values:
     image:
