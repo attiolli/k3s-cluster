@@ -9,4 +9,4 @@ resources:
   - zigbee2mqtt
   - modbus2x
   - hass
-  - node-red
+  #- node-red
