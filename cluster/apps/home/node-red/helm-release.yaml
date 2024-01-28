@@ -56,7 +56,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: nodered-config-v2
+        existingClaim: nodered-config-v4
         mountPath: "/data"
     tolerations:
       - key: "master"
