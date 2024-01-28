@@ -24,6 +24,6 @@ spec:
       server: "10.0.99.12"
       path: "/srv/k8snvme"
     storageClass:
-      name: nfs-client
+      name: nfs-client-bgp
       defaultClass: false
       archiveOnDelete: true
