@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: csi-driver-nfs
+  name: csi-driver-nfs2
   namespace: storage
 spec:
   interval: 5m
@@ -21,9 +21,9 @@ spec:
       repository: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
       tag: v4.0.2
     nfs:
-      server: "10.0.40.12"
+      server: "10.0.99.12"
       path: "/srv/k8snvme"
     storageClass:
-      name: nfs-client
+      name: nfs-client-bgp
       defaultClass: false
       archiveOnDelete: true
