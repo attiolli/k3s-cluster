@@ -96,7 +96,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: z2m-config-v2
+        existingClaim: z2m-config-v4
         mountPath: "/data"
 
     tolerations:
