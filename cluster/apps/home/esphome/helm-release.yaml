@@ -27,7 +27,7 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: csi-driver-nfs
+    - name: csi-driver-nfs2
       namespace: storage
   values:
     image:
@@ -78,7 +78,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: esph-config-v2
+        existingClaim: esph-config-v4
 
     tolerations:
       - key: "master"
