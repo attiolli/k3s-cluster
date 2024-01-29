@@ -146,7 +146,9 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClass: "nfs-client-bgp"
+              storageClassName: nfs-client-bgp
+              accessModes:
+                - ReadWriteOnce
               resources:
                 requests:
                   storage: 1Gi
