@@ -27,7 +27,7 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: csi-driver-nfs
+    - name: csi-driver-nfs2
       namespace: storage
   values:
     image:
@@ -54,7 +54,7 @@ spec:
       data:
         enabled: true
         mountPath: /data
-        existingClaim: mosquitto-config-v2
+        existingClaim: mosquitto-config-v4
       config:
         enabled: true
         type: configMap
