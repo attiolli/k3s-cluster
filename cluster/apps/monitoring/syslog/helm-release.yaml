@@ -59,7 +59,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: syslog-config-v1
+        existingClaim: syslog-config-v4
         mountPath: "/config"
 
     tolerations:
