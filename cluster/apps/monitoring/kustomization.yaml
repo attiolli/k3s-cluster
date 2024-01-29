@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secret.sops.yaml
-    #- alert-manager
-    #- prom-stack
+  - alert-manager
+  - prom-stack
   - grafana
   - speedtest-exporter
   - syslog
