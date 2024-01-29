@@ -195,6 +195,8 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: nfs-client-bgp
+              accessModes:
+                - ReadWriteOnce
               resources:
                 requests:
                   storage: 40Gi
