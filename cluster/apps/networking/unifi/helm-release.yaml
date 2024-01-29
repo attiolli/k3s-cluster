@@ -75,7 +75,7 @@ spec:
     persistence:
       data:
         enabled: true
-        existingClaim: unifi-config-v2
+        existingClaim: unifi-config-v4
         mountPath: "/unifi"
 
     tolerations:
