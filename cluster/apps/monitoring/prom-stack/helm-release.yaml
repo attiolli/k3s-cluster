@@ -26,7 +26,7 @@ spec:
     remediation:
       retries: 3
   dependsOn:
-    - name: csi-driver-nfs
+    - name: csi-driver-nfs2
       namespace: storage
   values:
     fullnameOverride: prom
@@ -146,7 +146,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClass: "nfs-client"
+              storageClass: "nfs-client-bgp"
               resources:
                 requests:
                   storage: 1Gi
@@ -192,7 +192,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: nfs-client
+              storageClassName: nfs-client-bgp
               resources:
                 requests:
                   storage: 40Gi

@@ -68,7 +68,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: influxdb-config-v1
+        existingClaim: influxdb-config-v4
         mountPath: /var/lib/influxdb
 
     tolerations:
