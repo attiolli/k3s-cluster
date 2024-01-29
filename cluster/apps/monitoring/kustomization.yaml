@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
   - secret.sops.yaml
   - alert-manager
-    #- prom-stack
+  - prom-stack
   - grafana
   - speedtest-exporter
   - syslog
