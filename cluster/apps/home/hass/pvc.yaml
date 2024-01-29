@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: hass-config-v2
+  name: hass-config-v4
   namespace: home
 spec:
   accessModes:
@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  storageClassName: nfs-client
+  storageClassName: nfs-client-bgp
