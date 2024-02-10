@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mosquitto-config
+  namespace: home
+data:
+  mosquitto.conf: |
+    per_listener_settings false
+    listener 1883
+    allow_anonymous false
+    persistence true
+    persistence_location /data/mosquitto
+    password_file /ext_mount/secret/mosquitto_pwd
+    autosave_interval 1800
+    connection_messages true
+    autosave_interval 60
