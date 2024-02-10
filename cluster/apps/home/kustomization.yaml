@@ -10,4 +10,4 @@ resources:
   - modbus2x
   - hass
   - node-red
-  - frigate
+    #- frigate
