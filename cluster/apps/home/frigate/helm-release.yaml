@@ -1,0 +1,124 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: frigate
+  namespace: home
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.2
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: mosquitto
+      namespace: home
+    - name: csi-driver-nfs2
+      namespace: storage
+  values:
+    image:
+      repository: ghcr.io/blakeblackshear/frigate
+      tag: 0.13.0-rc1@sha256:24dce42044a0f9631813beea9d49afb266e9bef77ed6972cd1486e14463d7dc6
+
+    env:
+      TZ: Europe/Helsinki
+      LIBVA_DRIVER_NAME: i965
+
+    securityContext:
+      privileged: true
+
+    service:
+      main:
+        ports:
+          http:
+            port: &port 5000
+          rtsp:
+            port: 8554
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - host: &host "frigate.${MAIN_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /api/version
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: frigate
+        globalMounts:
+          - path: /data
+      config-file:
+        type: configMap
+        name: frigate-configmap
+        globalMounts:
+          - path: /config/config.yml
+            subPath: config.yml
+            readOnly: true
+      cache:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 4Gi
+        globalMounts:
+          - path: /dev/shm
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/bus/usb
+        hostPathType: Directory
+        globalMounts:
+          - path: /dev/bus/usb
+      media:
+        type: nfs
+        server: 10.0.99.12
+        path: /srv/tank-users/frigate
+        globalMounts:
+          - path: /media
+
+    tolerations:
+      - key: "master"
+        operator: "Equal"
+        value: "false"
+        effect: "NoSchedule"
+
+    nodeSelector:
+      kubernetes.io/hostname: "k8s-worker3"
