@@ -84,8 +84,7 @@ spec:
       config:
         enabled: true
         existingClaim: frigate-config-v4
-        globalMounts:
-          - path: /data
+        mountPath: /data
       config-file:
         enabled: true
         type: configMap
@@ -97,21 +96,18 @@ spec:
         type: emptyDir
         medium: Memory
         sizeLimit: 4Gi
-        globalMounts:
-          - path: /dev/shm
+        mountPath: /dev/shm
       usb:
         enabled: true
         type: hostPath
         hostPath: /dev/bus/usb
         hostPathType: Directory
-        globalMounts:
-          - path: /dev/bus/usb
+        mountPath: /dev/bus/usb
       media:
         type: nfs
         server: 10.0.99.12
         path: /srv/tank-users/frigate
-        globalMounts:
-          - path: /media
+        mountPath: /media
 
     tolerations:
       - key: "master"
