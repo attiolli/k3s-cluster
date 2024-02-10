@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: csi-driver-nfs3
+  namespace: storage
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+      chart: nfs-subdir-external-provisioner
+      version: 4.0.17
+      sourceRef:
+        kind: HelmRepository
+        name: nfs-subdir-external-provisioner-charts
+        namespace: flux-system
+      interval: 10m
+  values:
+    image:
+      repository: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
+      tag: v4.0.2
+    nfs:
+      server: "10.0.99.12"
+      path: "/srv/tank-users/frigate"
+    storageClass:
+      name: nfs-frigate-bgp
+      defaultClass: false
+      archiveOnDelete: true

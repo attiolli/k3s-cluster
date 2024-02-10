@@ -29,6 +29,8 @@ spec:
   dependsOn:
     - name: mosquitto
       namespace: home
+    - name: csi-driver-nfs3
+      namespace: storage
     - name: csi-driver-nfs2
       namespace: storage
   values:
@@ -104,9 +106,8 @@ spec:
         hostPathType: Directory
         mountPath: /dev/bus/usb
       media:
-        type: nfs
-        server: 10.0.99.12
-        path: /srv/tank-users/frigate
+        enabled: true
+        existingClaim: frigate-media
         mountPath: /media
 
     tolerations:
