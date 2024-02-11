@@ -107,7 +107,7 @@ spec:
         mountPath: /dev/bus/usb
       media:
         enabled: true
-        existingClaim: frigate-media
+        existingClaim: frigate-dedicated-media
         mountPath: /media
 
     tolerations:

@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: frigate-media
+  name: frigate-dedicated-media
   namespace: home
 spec:
   accessModes:
