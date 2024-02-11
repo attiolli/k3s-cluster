@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - nfs2.yaml
   - nfs3.yaml
+  - nfs-frigate.yaml
