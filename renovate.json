@@ -1,9 +1,0 @@
-{
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "helm-values": {
-    "fileMatch": ["cluster/apps/echo-server/.+\\.ya?ml$"]
-  }
-}

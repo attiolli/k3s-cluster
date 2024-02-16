@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+  ],
+  "flux": {
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  }
+}
