@@ -38,11 +38,11 @@ data:
     record:
       enabled: true
       retain:
-        days: 2
+        days: 7
         mode: all
       events:
         retain:
-          default: 2
+          default: 7
           mode: active_objects
     
     objects:
