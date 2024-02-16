@@ -4,6 +4,6 @@
     "config:recommended"
   ],
   "helm-values": {
-    "fileMatch": ["k3s-cluster/cluster/apps/echo-server/.+\\.ya?ml$"]
+    "fileMatch": ["cluster/apps/echo-server/.+\\.ya?ml$"]
   }
 }
