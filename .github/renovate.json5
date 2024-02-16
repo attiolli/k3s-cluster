@@ -4,6 +4,12 @@
     "config:recommended",
     
   ],
+  "schedule": [
+    "after 11pm every weekday",
+    "before 6am every weekday",
+    "after 11pm every weekend",
+    "before 6am every weekend"
+  ],
   "timezone": "Europe/Helsinki",
   "flux": {
     "fileMatch": ["cluster/.+\\.ya?ml$"]
