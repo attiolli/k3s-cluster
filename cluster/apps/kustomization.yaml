@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - storage
   - system
+  - kube-system
   - networking
   - cert-manager
   - echo-server
