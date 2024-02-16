@@ -2,5 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "helm-values": {
+    "fileMatch": ["k3s-cluster/cluster/apps/echo-server/.+\\.ya?ml$"]
+  }
 }
