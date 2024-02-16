@@ -28,3 +28,4 @@ spec:
     reloader:
       podMonitor:
         enabled: true
+        namespace: "{{ .Release.Namespace }}"
