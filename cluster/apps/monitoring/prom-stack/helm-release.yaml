@@ -29,6 +29,9 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     fullnameOverride: prom
     defaultRules:
       enabled: true

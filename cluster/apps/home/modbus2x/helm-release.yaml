@@ -26,6 +26,9 @@ spec:
     #- name: csi-driver-nfs
     #  namespace: storage
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: vaizki/modbus2x
       tag: 75d196e

@@ -30,6 +30,9 @@ spec:
     recreate: true
     cleanupOnFail: true
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     env:
       - name: TELEGRAM_CHAT_ID
         valueFrom:

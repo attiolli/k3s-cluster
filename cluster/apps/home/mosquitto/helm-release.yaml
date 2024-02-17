@@ -30,6 +30,9 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: public.ecr.aws/docker/library/eclipse-mosquitto
       tag: 2.0.18

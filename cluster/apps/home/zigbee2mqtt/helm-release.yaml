@@ -32,6 +32,9 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/koenkk/zigbee2mqtt
       tag: 1.32.2
