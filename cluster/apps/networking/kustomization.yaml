@@ -6,3 +6,4 @@ resources:
   - metallb-system
   - nginx
   - unifi
+  - echo-server
