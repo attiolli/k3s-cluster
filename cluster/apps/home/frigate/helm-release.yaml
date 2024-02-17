@@ -34,6 +34,9 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/blakeblackshear/frigate
       tag: 0.13.0-rc1@sha256:24dce42044a0f9631813beea9d49afb266e9bef77ed6972cd1486e14463d7dc6
