@@ -6,7 +6,7 @@ resources:
   - kube-system
   - networking
   - cert-manager
-  - echo-server
+    #- echo-server
   - media
   - home
   - monitoring
