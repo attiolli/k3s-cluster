@@ -28,6 +28,12 @@ spec:
   values:
     controllers:
       main:
+        replicas: 2
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        replicas: 3
+        strategy: RollingUpdate
         containers:
           main:
             replicas: 2
