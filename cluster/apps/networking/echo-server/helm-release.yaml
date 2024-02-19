@@ -99,7 +99,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 8080
+            port: *port
 
     ingress:
       main:
