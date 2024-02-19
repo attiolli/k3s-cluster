@@ -8,6 +8,6 @@ resources:
   - mosquitto
   - zigbee2mqtt
   - modbus2x
-    #- hass
+  - hass
   - node-red
   - frigate
