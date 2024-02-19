@@ -97,7 +97,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         enabled: true
-        ingressClassName: nginx
+        className: nginx
         hosts:
           - host: &host "echo.${MAIN_DOMAIN}"
             paths:
