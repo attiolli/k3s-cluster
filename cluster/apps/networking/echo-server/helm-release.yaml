@@ -36,12 +36,6 @@ spec:
         strategy: RollingUpdate
         containers:
           main:
-            replicas: 2
-            strategy: RollingUpdate
-            annotations:
-              reloader.stakater.com/auto: "true"
-            replicas: 3
-            strategy: RollingUpdate
             image:
               repository: docker.io/jmalloc/echo-server
               tag: 0.3.6
