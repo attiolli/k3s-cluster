@@ -84,26 +84,31 @@ spec:
       config:
         enabled: true
         existingClaim: frigate-config-v4
-        mountPath: /data
+        globalMounts:
+          - mountPath: /data
       config-file:
         enabled: true
         type: configMap
         name: frigate-configmap
-        mountPath: /config/config.yml
+        globalMounts:
+          - mountPath: /config/config.yml
         subPath: config.yml
       cache:
         enabled: true
         type: emptyDir
         medium: Memory
         sizeLimit: 4Gi
-        mountPath: /dev/shm
+        globalMounts:
+          - mountPath: /dev/shm
       usb:
         enabled: true
         type: hostPath
         hostPath: /dev/bus/usb
         hostPathType: Directory
-        mountPath: /dev/bus/usb
+        globalMounts:
+          - mountPath: /dev/bus/usb
       media:
         enabled: true
         existingClaim: frigate-dedicated-media
-        mountPath: /media
+        globalMounts:
+          - mountPath: /media
