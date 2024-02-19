@@ -26,15 +26,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    service:
-      main:
-        ports:
-          http:
-            port: &port 8080
     controllers:
       main:
-        replicas: 2
-        strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
         replicas: 3
@@ -100,6 +93,11 @@ spec:
                 matchLabels:
                   app.kubernetes.io/name: *app
 
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8080
 
     ingress:
       main:
