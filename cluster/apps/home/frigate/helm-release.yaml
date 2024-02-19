@@ -92,6 +92,7 @@ spec:
                 service:
                   name: main
                   pathType: Prefix
+                  port: http
         tls:
           - hosts:
               - *host
