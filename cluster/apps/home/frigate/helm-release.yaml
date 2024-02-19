@@ -10,7 +10,7 @@ spec:
     spec:
       chart: app-template
       version: 2.6.0
-      interval: 30m
+      interval: 35m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -84,13 +84,14 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx"
+        className: "nginx"
         hosts:
           - host: &host "frigate.${MAIN_DOMAIN}"
             paths:
               - path: /
-                name: main
-                pathType: Prefix
+                service:
+                  name: main
+                  pathType: Prefix
         tls:
           - hosts:
               - *host
