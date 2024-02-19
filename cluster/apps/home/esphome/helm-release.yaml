@@ -81,6 +81,7 @@ spec:
           - host: *host
             paths:
               - path: /
+                name: main
                 pathType: Prefix
         tls:
           - hosts:
