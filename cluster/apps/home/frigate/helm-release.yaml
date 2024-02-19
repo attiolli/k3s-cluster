@@ -10,7 +10,7 @@ spec:
     spec:
       chart: app-template
       version: 2.6.0
-      interval: 32m
+      interval: 33m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -56,9 +56,9 @@ spec:
                   httpGet:
                     path: /api/version
                     port: &port 5000
-                  initialDelaySeconds: 0
+                  initialDelaySeconds: 20
                   periodSeconds: 10
-                  timeoutSeconds: 1
+                  timeoutSeconds: 5
                   failureThreshold: 4
               readiness: *probes
               startup:
