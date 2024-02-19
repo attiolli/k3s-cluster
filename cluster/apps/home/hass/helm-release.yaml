@@ -47,10 +47,6 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
           code:
             image:
               repository: ghcr.io/coder/code-server
@@ -75,12 +71,6 @@ spec:
               operator: "Equal"
               value: "false"
               effect: "NoSchedule"
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            runAsNonRoot: true
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
 
     service:
       main:
