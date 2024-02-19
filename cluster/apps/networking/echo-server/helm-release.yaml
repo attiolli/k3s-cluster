@@ -38,7 +38,7 @@ spec:
               repository: docker.io/jmalloc/echo-server
               tag: 0.3.6
             env:
-              PORT: *port
+              PORT: &port 8080
               LOG_WITHOUT_NEWLINE: true
               LOG_IGNORE_PATH: &path /health
               PROMETHEUS_ENABLED: true
@@ -97,7 +97,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 8080
+            port: *port
 
     ingress:
       main:
