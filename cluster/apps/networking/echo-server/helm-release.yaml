@@ -26,6 +26,11 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8080
     controllers:
       main:
         replicas: 2
@@ -40,7 +45,7 @@ spec:
               repository: docker.io/jmalloc/echo-server
               tag: 0.3.6
             env:
-              PORT: &port 8080
+              PORT: *port
               LOG_WITHOUT_NEWLINE: true
               LOG_IGNORE_PATH: &path /health
               PROMETHEUS_ENABLED: true
@@ -95,11 +100,6 @@ spec:
                 matchLabels:
                   app.kubernetes.io/name: *app
 
-    service:
-      main:
-        ports:
-          http:
-            port: *port
 
     ingress:
       main:
