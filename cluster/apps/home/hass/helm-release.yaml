@@ -114,5 +114,9 @@ spec:
       config:
         enabled: true
         existingClaim: hass-config-v4
-        globalMounts:
-          - path: /config
+        advancedMounts:
+          main:
+            main:
+              - path: /config
+            code:
+              - path: /config
