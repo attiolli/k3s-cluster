@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.6.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -34,25 +34,50 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
-    image:
-      repository: ghcr.io/blakeblackshear/frigate
-      tag: 0.13.0-rc1@sha256:24dce42044a0f9631813beea9d49afb266e9bef77ed6972cd1486e14463d7dc6
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+      containers:
+        main:
+          image:
+            repository: ghcr.io/blakeblackshear/frigate
+            tag: 0.13.0-rc1@sha256:24dce42044a0f9631813beea9d49afb266e9bef77ed6972cd1486e14463d7dc6
+          env:
+            TZ: Europe/Helsinki
+            LIBVA_DRIVER_NAME: i965
+          securityContext:
+            privileged: true
+          probes:
+            liveness: &probes
+              enabled: true
+              custom: true
+              spec:
+                httpGet:
+                  path: /api/version
+                  port: &port 5000
+                initialDelaySeconds: 0
+                periodSeconds: 10
+                timeoutSeconds: 1
+                failureThreshold: 3
+            readiness: *probes
+            startup:
+              enabled: false
 
-    env:
-      TZ: Europe/Helsinki
-      LIBVA_DRIVER_NAME: i965
-
-    securityContext:
-      privileged: true
+      pod:
+        nodeSelector:
+          kubernetes.io/hostname: "k8s-worker3"
+        tolerations:
+          - key: "master"
+            operator: "Equal"
+            value: "false"
+            effect: "NoSchedule"
 
     service:
       main:
         ports:
           http:
-            port: &port 5000
+            port: *port
           rtsp:
             port: 8554
 
@@ -64,26 +89,11 @@ spec:
           - host: &host "frigate.${MAIN_DOMAIN}"
             paths:
               - path: /
+                name: main
                 pathType: Prefix
         tls:
           - hosts:
               - *host
-
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /api/version
-            port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
-      startup:
-        enabled: false
 
     persistence:
       config:
@@ -112,12 +122,3 @@ spec:
         enabled: true
         existingClaim: frigate-dedicated-media
         mountPath: /media
-
-    tolerations:
-      - key: "master"
-        operator: "Equal"
-        value: "false"
-        effect: "NoSchedule"
-
-    nodeSelector:
-      kubernetes.io/hostname: "k8s-worker3"
