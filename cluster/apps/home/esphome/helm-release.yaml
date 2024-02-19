@@ -76,13 +76,15 @@ spec:
           nginx.ingress.kubernetes.io/auth-secret: basic-auth
           nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
         enabled: true
-        ingressClassName: "nginx"
+        className: "nginx"
         hosts:
           - host: *host
             paths:
               - path: /
-                name: main
-                pathType: Prefix
+                service:
+                  name: main
+                  pathType: Prefix
+                  port: http
         tls:
           - hosts:
               - *host
