@@ -64,14 +64,14 @@ spec:
               startup:
                 enabled: false
 
-      pod:
-        nodeSelector:
-          kubernetes.io/hostname: "k8s-worker3"
-        tolerations:
-          - key: "master"
-            operator: "Equal"
-            value: "false"
-            effect: "NoSchedule"
+        pod:
+          nodeSelector:
+            kubernetes.io/hostname: "k8s-worker3"
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
 
     service:
       main:
