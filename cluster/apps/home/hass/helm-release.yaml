@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+      interval: 15m
   maxHistory: 3
   install:
     createNamespace: false
@@ -86,7 +86,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
         hosts:
-          - host: &host "ha.${MAIN_DOMAIN}"
+          - host: &host "hass.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
@@ -99,7 +99,7 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: &code-host "hacode.${MAIN_DOMAIN}"
+          - host: &code-host "hasscode.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
