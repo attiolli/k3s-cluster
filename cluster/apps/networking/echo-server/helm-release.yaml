@@ -102,6 +102,7 @@ spec:
           - host: &host "echo.${MAIN_DOMAIN}"
             paths:
               - path: /
+                name: main
                 pathType: Prefix
         tls:
           - hosts:
