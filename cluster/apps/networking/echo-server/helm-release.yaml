@@ -71,16 +71,16 @@ spec:
                 drop:
                   - ALL
             tolerations:
-               - key: "master"
-                 operator: "Equal"
-                 value: "false"
-                 effect: "NoSchedule"
-             resources:
-               requests:
-                 cpu: 5m
-                 memory: 10Mi
-               limits:
-                 memory: 50Mi
+              - key: "master"
+                operator: "Equal"
+                value: "false"
+                effect: "NoSchedule"
+            resources:
+              requests:
+                cpu: 5m
+                memory: 10Mi
+              limits:
+                memory: 50Mi
 
         pod:
           securityContext:
