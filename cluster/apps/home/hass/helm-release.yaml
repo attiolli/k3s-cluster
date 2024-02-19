@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.6.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -30,20 +30,61 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
-    global:
-      fullnameOverride: hass
-    image:
-      repository: ghcr.io/home-assistant/home-assistant
-      tag: 2023.6.3
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        fullnameOverride: hass
+        containers:
+          main:
+            image:
+              repository: ghcr.io/home-assistant/home-assistant
+              tag: 2023.6.3
+            probes: &probes
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+          codeserver:
+            image:
+              repository: ghcr.io/coder/code-server
+              tag: 4.21.1
+            env:
+              TZ: Europe/Helsinki
+            workingDir: /config
+            args:
+              - --auth
+              - "none"
+              - --user-data-dir
+              - "/config/.vscode"
+              - --extensions-dir
+              - "/config/.vscode"
+            probes: *probes
+
+        pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: hass-static
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            runAsNonRoot: true
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
 
     service:
       main:
         ports:
           http:
             port: 8123
+          code:
+            port: 80
 
     ingress:
       main:
@@ -55,61 +96,32 @@ spec:
           - host: &host "hass.${MAIN_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+      code:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: &code-host "hasscode.${MAIN_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: code
         tls:
           - hosts:
               - *host
 
-    podAnnotations:
-      k8s.v1.cni.cncf.io/networks: hass-static
 
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
-    
     persistence:
       config:
         enabled: true
         existingClaim: hass-config-v4
 
-    tolerations:
-      - key: "master"
-        operator: "Equal"
-        value: "false"
-        effect: "NoSchedule"
-
-    addons:
-      codeserver:
-        enabled: true
-        image:
-          repository: ghcr.io/coder/code-server
-          tag: 4.21.1
-        env:
-          TZ: Europe/Helsinki
-        workingDir: /config
-        args:
-          - --auth
-          - "none"
-          - --user-data-dir
-          - "/config/.vscode"
-          - --extensions-dir
-          - "/config/.vscode"
-        ingress:
-          enabled: true
-          ingressClassName: "nginx"
-          hosts:
-            - host: &code-host "hasscode.${MAIN_DOMAIN}"
-              paths:
-                - path: /
-                  pathType: Prefix
-          tls:
-            - hosts:
-                - *code-host
-
-        volumeMounts:
-          - name: config
-            mountPath: /config
+    volumeMounts:
+      - name: config
+        mountPath: /config
