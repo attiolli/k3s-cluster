@@ -77,7 +77,7 @@ spec:
           http:
             port: 8123
           code:
-            port: 80
+            port: 8080
 
     ingress:
       main:
