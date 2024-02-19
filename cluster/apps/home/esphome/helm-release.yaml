@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.6.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -30,26 +30,37 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
-    image:
-      repository: esphome/esphome
-      tag: 2023.12.9
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+      containers:
+        main:
+          image:
+            repository: esphome/esphome
+            tag: 2023.12.9
 
-    env:
-      ESPHOME_INSTANCE_NAME: ESPHome
-      ESPHOME_PORT: &port 6052
-      ESPHOME_APPLICATION_URL: &host "esph.${MAIN_DOMAIN}"
-      ESPHOME_LOG_LEVEL: info
-      ESPHOME_DASHBOARD_USE_PING: true
+          env:
+            ESPHOME_INSTANCE_NAME: ESPHome
+            ESPHOME_PORT: &port 6052
+            ESPHOME_APPLICATION_URL: &host "esph.${MAIN_DOMAIN}"
+            ESPHOME_LOG_LEVEL: info
+            ESPHOME_DASHBOARD_USE_PING: true
 
-    # App needs to run as root because of this: https://github.com/esphome/issues/issues/2752
-    securityContext:
-      runAsNonRoot: false
-      readOnlyRootFilesystem: false
-      privileged: true
-      allowPrivilegeEscalation: true
+          # App needs to run as root because of this: https://github.com/esphome/issues/issues/2752
+          securityContext:
+            runAsNonRoot: false
+            readOnlyRootFilesystem: false
+            privileged: true
+            allowPrivilegeEscalation: true
+      pod:
+        annotations:
+          k8s.v1.cni.cncf.io/networks: esphome-static
+        tolerations:
+          - key: "master"
+            operator: "Equal"
+            value: "false"
+            effect: "NoSchedule"
 
     service:
       main:
@@ -75,16 +86,7 @@ spec:
           - hosts:
               - *host
 
-    podAnnotations:
-      k8s.v1.cni.cncf.io/networks: esphome-static
-
     persistence:
       config:
         enabled: true
         existingClaim: esph-config-v4
-
-    tolerations:
-      - key: "master"
-        operator: "Equal"
-        value: "false"
-        effect: "NoSchedule"
