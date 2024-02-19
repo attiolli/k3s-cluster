@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &app echo-server
+  name: &app echoserver
   namespace: networking
 spec:
   interval: 15m
@@ -102,8 +102,9 @@ spec:
           - host: &host "echo.${MAIN_DOMAIN}"
             paths:
               - path: /
-                name: main
-                pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
