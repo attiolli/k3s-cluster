@@ -34,33 +34,33 @@ spec:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
-      containers:
-        main:
-          image:
-            repository: esphome/esphome
-            tag: 2023.12.9
+        containers:
+          main:
+            image:
+              repository: esphome/esphome
+              tag: 2023.12.9
 
-          env:
-            ESPHOME_INSTANCE_NAME: ESPHome
-            ESPHOME_PORT: &port 6052
-            ESPHOME_APPLICATION_URL: &host "esph.${MAIN_DOMAIN}"
-            ESPHOME_LOG_LEVEL: info
-            ESPHOME_DASHBOARD_USE_PING: true
+            env:
+              ESPHOME_INSTANCE_NAME: ESPHome
+              ESPHOME_PORT: &port 6052
+              ESPHOME_APPLICATION_URL: &host "esph.${MAIN_DOMAIN}"
+              ESPHOME_LOG_LEVEL: info
+              ESPHOME_DASHBOARD_USE_PING: true
 
-          # App needs to run as root because of this: https://github.com/esphome/issues/issues/2752
-          securityContext:
-            runAsNonRoot: false
-            readOnlyRootFilesystem: false
-            privileged: true
-            allowPrivilegeEscalation: true
-      pod:
-        annotations:
-          k8s.v1.cni.cncf.io/networks: esphome-static
-        tolerations:
-          - key: "master"
-            operator: "Equal"
-            value: "false"
-            effect: "NoSchedule"
+            # App needs to run as root because of this: https://github.com/esphome/issues/issues/2752
+            securityContext:
+              runAsNonRoot: false
+              readOnlyRootFilesystem: false
+              privileged: true
+              allowPrivilegeEscalation: true
+        pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: esphome-static
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
 
     service:
       main:
