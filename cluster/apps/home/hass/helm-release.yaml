@@ -34,7 +34,7 @@ spec:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
-        fullnameOverride: hass
+        #fullnameOverride: hass
         containers:
           main:
             image:
@@ -47,7 +47,11 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-          codeserver:
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+          code:
             image:
               repository: ghcr.io/coder/code-server
               tag: 4.21.1
