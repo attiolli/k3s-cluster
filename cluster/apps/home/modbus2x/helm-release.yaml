@@ -48,7 +48,7 @@ spec:
                     name: mosquitto-secret
                     key: password
               MODBUS_MQTT_PUBLISH_INTERVAL: 15
-              MODBUS_HA_EXPIRE_AFTER: 30
+              MODBUS_HA_EXPIRE_AFTER: 35
             probes:
               liveness:
                 enabled: false
