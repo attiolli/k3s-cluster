@@ -29,39 +29,39 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-	  main:
-	    image:
-	      repository: vaizki/modbus2x
-	      tag: 75d196e
-	    env:
-	      TZ: "${TZ}"
-	      MODBUS_DEBUG: yes
-	      MODBUS_MQTT_BROKER: "${SVC_MQTT_ADDR}"
-	      MODBUS_MQTT_USERNAME:
-		valueFrom:
-		  secretKeyRef:
-		    name: mosquitto-secret
-		    key: username
-	      MODBUS_MQTT_PASSWORD:
-		valueFrom:
-		  secretKeyRef:
-		    name: mosquitto-secret
-		    key: password
-	      MODBUS_MQTT_PUBLISH_INTERVAL: 15
-	      MODBUS_HA_EXPIRE_AFTER: 30
-	    probes:
-	      liveness:
-		enabled: false
-	      readiness:
-		enabled: false
-	      startup:
-		enabled: false
+          main:
+            image:
+              repository: vaizki/modbus2x
+              tag: 75d196e
+            env:
+              TZ: "${TZ}"
+              MODBUS_DEBUG: yes
+              MODBUS_MQTT_BROKER: "${SVC_MQTT_ADDR}"
+              MODBUS_MQTT_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: mosquitto-secret
+                    key: username
+              MODBUS_MQTT_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: mosquitto-secret
+                    key: password
+              MODBUS_MQTT_PUBLISH_INTERVAL: 15
+              MODBUS_HA_EXPIRE_AFTER: 30
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
         pod:
-	  tolerations:
-	    - key: "master"
-	      operator: "Equal"
-	      value: "false"
-	      effect: "NoSchedule"
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
 
     service:
       main:
