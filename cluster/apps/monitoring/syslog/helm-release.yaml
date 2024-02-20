@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.6.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,14 +28,35 @@ spec:
     recreate: true
     cleanupOnFail: true
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
-    image:
-      repository: ghcr.io/linuxserver/syslog-ng
-      tag: 3.38.1
-      pullPolicy: IfNotPresent
-
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/linuxserver/syslog-ng
+              tag: 3.38.1
+              pullPolicy: IfNotPresent
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+            resources:
+              requests:
+                memory: 50M
+              limits:
+                memory: 100M
+        pod:
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
+      
     service:
       main:
         enabled: true
@@ -51,29 +72,9 @@ spec:
             port: 5514
             protocol: UDP
 
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
-
     persistence:
       config:
         enabled: true
         existingClaim: syslog-config-v4
-        mountPath: "/config"
-
-    tolerations:
-      - key: "master"
-        operator: "Equal"
-        value: "false"
-        effect: "NoSchedule"
-
-
-    resources:
-      requests:
-        memory: 50M
-      limits:
-        memory: 100M
+        globalMounts:
+          - path: "/config"
