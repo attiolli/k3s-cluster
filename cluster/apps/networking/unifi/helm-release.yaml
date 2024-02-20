@@ -26,9 +26,10 @@ spec:
     controllers:
       main:
         containers:
-          image:
-            repository: jacobalberty/unifi
-            tag: v7.3.83
+          main:
+            image:
+              repository: jacobalberty/unifi
+              tag: v7.3.83
         pod:
           tolerations:
             - key: "master"
