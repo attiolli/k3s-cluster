@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.6.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -30,12 +30,26 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
-    image:
-      repository: public.ecr.aws/docker/library/eclipse-mosquitto
-      tag: 2.0.18
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+          image:
+            repository: public.ecr.aws/docker/library/eclipse-mosquitto
+            tag: 2.0.18
+          resources:
+            requests:
+              memory: 64M
+            limits:
+              memory: 64M
+        pod:
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
 
     service:
       main:
@@ -56,29 +70,19 @@ spec:
     persistence:
       data:
         enabled: true
-        mountPath: /data
         existingClaim: mosquitto-config-v4
+        globalMounts:
+          - path: /data
       config:
         enabled: true
         type: configMap
         name: mosquitto-config
-        mountPath: /mosquitto/config/mosquitto.conf
-        subPath: mosquitto.conf
+        globalMounts:
+          - path: /mosquitto/config/mosquitto.conf
+            subPath: mosquitto.conf
       mosquitto-secret:
         enabled: true
         type: secret
         name: mosquitto-secret
-        mountPath: /ext_mount/secret
-        readOly: true
-
-    tolerations:
-      - key: "master"
-        operator: "Equal"
-        value: "false"
-        effect: "NoSchedule"
-
-    resources:
-      requests:
-        memory: 64M
-      limits:
-        memory: 64M
+        globalMounts:
+          - path: /ext_mount/secret
