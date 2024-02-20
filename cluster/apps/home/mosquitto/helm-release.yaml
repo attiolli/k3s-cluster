@@ -36,14 +36,14 @@ spec:
           reloader.stakater.com/auto: "true"
         containers:
           main:
-          image:
-            repository: public.ecr.aws/docker/library/eclipse-mosquitto
-            tag: 2.0.18
-          resources:
-            requests:
-              memory: 64M
-            limits:
-              memory: 64M
+            image:
+              repository: public.ecr.aws/docker/library/eclipse-mosquitto
+              tag: 2.0.18
+            resources:
+              requests:
+                memory: 64M
+              limits:
+                memory: 64M
         pod:
           tolerations:
             - key: "master"
