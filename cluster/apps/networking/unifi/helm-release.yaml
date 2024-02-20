@@ -29,7 +29,7 @@ spec:
           main:
             image:
               repository: jacobalberty/unifi
-              tag: v7.3.83
+              tag: v7.5.176
         pod:
           tolerations:
             - key: "master"
