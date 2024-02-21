@@ -6,7 +6,7 @@
     "github>attiolli/k3s-cluster//.github/renovate/pr-labels.json"
   ],
   "schedule": [
-    "after 11pm every weekday",
+    "after 4pm every weekday",
     "before 6am every weekday",
     "after 11pm every weekend",
     "before 6am every weekend"
