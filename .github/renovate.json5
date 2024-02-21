@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    
+    "github>attiolli/k3s-cluster//.github/renovate/commit-message.json",
+    "github>attiolli/k3s-cluster//.github/renovate/pr-labels.json"
   ],
   "schedule": [
     "after 11pm every weekday",
