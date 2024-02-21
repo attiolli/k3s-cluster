@@ -12,6 +12,7 @@
     "before 6am every weekend"
   ],
   "timezone": "Europe/Helsinki",
+  "prHourlyLimit": 5,
   "flux": {
     "fileMatch": ["cluster/.+\\.ya?ml$"]
   },
