@@ -44,7 +44,7 @@ spec:
       server:
         root_url: "https://grafana.${MAIN_DOMAIN}"
       date_formats:
-        default_timezone: "Europe/Helsinki"
+        default_timezone: browser
       paths:
         data: /var/lib/grafana/data
         logs: /var/log/grafana
