@@ -36,7 +36,7 @@ spec:
           main:
             image:
               repository: ghcr.io/linuxserver/syslog-ng
-              tag: 3.38.1
+              tag: 4.5.0
               pullPolicy: IfNotPresent
             probes:
               liveness:
