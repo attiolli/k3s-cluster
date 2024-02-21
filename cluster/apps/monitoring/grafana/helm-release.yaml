@@ -26,7 +26,6 @@ spec:
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
       GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
-      GF_DATE_FORMATS_DEFAULT_TIMEZONE: browser
       GF_DATE_FORMATS_FULL_DATE: "MMM Do, YYYY hh:mm:ss a"
       GF_DATE_FORMATS_INTERVAL_SECOND: "hh:mm:ss a"
       GF_DATE_FORMATS_INTERVAL_MINUTE: "hh:mm a"
@@ -54,6 +53,8 @@ spec:
         reporting_enabled: false
       log:
         mode: console
+      date_formats:
+        use_browser_locale: true
       grafana_net:
         url: https://grafana.net
       #auth:
