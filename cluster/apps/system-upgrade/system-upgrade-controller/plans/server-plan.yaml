@@ -19,3 +19,10 @@ spec:
       - "true"
   upgrade:
     image: rancher/k3s-upgrade
+  tolerations:
+    - key: "master"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "master"
+      operator: "Exists"
+      effect: "NoExecute"
