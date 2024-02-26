@@ -7,9 +7,9 @@ metadata:
   labels:
     k3s-upgrade: agent
 spec:
-  version: "v1.29.0+k3s1"
+  version: "v1.26.12+k3s1"
   serviceAccountName: system-upgrade
-  concurrency: 4
+  concurrency: 2
   nodeSelector:
     matchExpressions:
       - {key: k3s-upgrade, operator: Exists}
