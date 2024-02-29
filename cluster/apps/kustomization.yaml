@@ -6,7 +6,7 @@ resources:
   - kube-system
   - networking
   - cert-manager
-    #- media
+  - media
   - home
   - monitoring
   #- system-upgrade

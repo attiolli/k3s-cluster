@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &app lms
+  name: lms
   namespace: media
 spec:
   interval: 30m
@@ -33,11 +33,8 @@ spec:
         containers:
           main:
             image:
-              repository: toertel/logitech-media-server
-              tag: v8.4.0-1@sha256:07dde462237c0618034c9d2db33967f5bc0db34544558e8edaac32ef0614555a
-            env:
-              AUDIO_DIR: &music /mnt/storage/music
-              PLAYLIST_DIR: &playlist /mnt/storage/apps/lms
+              repository: lmscommunity/logitechmediaserver
+              tag: 8.4.0
             resources:
               requests:
                 memory: 250Mi
@@ -88,15 +85,3 @@ spec:
       config:
         enabled: true
         existingClaim: lms-config
-        globalMounts:
-          - path: /srv/squeezebox
-      music:
-        enabled: true
-        existingClaim: lms-music
-        globalMounts:
-          - path: *music
-      playlists:
-        enabled: true
-        existingClaim: lms-playlists
-        globalMounts:
-          - path: *playlist
