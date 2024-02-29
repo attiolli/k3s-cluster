@@ -92,11 +92,11 @@ spec:
           - path: /srv/squeezebox
       music:
         enabled: true
-        existingClaim: lms-config
+        existingClaim: lms-music
         globalMounts:
           - path: *music
       playlists:
         enabled: true
-        existingClaim: lms-config
+        existingClaim: lms-playlists
         globalMounts:
           - path: *playlist
