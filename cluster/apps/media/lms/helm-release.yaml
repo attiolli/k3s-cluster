@@ -42,8 +42,8 @@ spec:
               limits:
                 memory: 4096Mi
         pod:
-          annotations:
-            k8s.v1.cni.cncf.io/networks: lms-static
+          #annotations:
+          #  k8s.v1.cni.cncf.io/networks: lms-static
           tolerations:
             - key: "master"
               operator: "Equal"
