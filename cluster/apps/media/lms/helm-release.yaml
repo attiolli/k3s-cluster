@@ -37,7 +37,7 @@ spec:
               tag: 8.4.0
             resources:
               requests:
-                memory: 250Mi
+                memory: 255Mi
                 cpu: 15m
               limits:
                 memory: 4096Mi
