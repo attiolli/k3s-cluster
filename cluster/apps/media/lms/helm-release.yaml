@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: lmscommunity/logitechmediaserver
-              tag: 8.4.0
+              tag: 8.5.1
             resources:
               requests:
                 memory: 255Mi
