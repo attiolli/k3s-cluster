@@ -24,10 +24,10 @@ spec:
       retries: 5
   values:
     controller:
-      logLevel: debug
+      logLevel: warn
     speaker:
       tolerateMaster: true
-      logLevel: debug
+      logLevel: warn
       frr:
         enabled: true
         image:
