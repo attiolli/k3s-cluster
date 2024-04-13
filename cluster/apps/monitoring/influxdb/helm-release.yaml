@@ -36,7 +36,7 @@ spec:
           main:
             image:
               repository: bitnami/influxdb
-              tag: 2.7.5
+              tag: 2.7.6
               pullPolicy: IfNotPresent
             env:
               INFLUXDB_ADMIN_USER_PASSWORD: "${INFLUXDB_ADMIN_USER_PASSWORD}"
