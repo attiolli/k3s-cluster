@@ -72,8 +72,8 @@ spec:
               MICROBIN_HASH_IDS: "false"
               MICROBIN_ENCRYPTION_CLIENT_SIDE: "true"
               MICROBIN_ENCRYPTION_SERVER_SIDE: "true"
-              MICROBIN_MAX_FILE_SIZE_ENCRYPTED_MB: "2048"
-              MICROBIN_MAX_FILE_SIZE_UNENCRYPTED_MB: "2048"
+              MICROBIN_MAX_FILE_SIZE_ENCRYPTED_MB: "8"
+              MICROBIN_MAX_FILE_SIZE_UNENCRYPTED_MB: "8"
               MICROBIN_DISABLE_TELEMETRY: "true"
         pod:
           tolerations:
