@@ -32,7 +32,7 @@ spec:
         - name: switch
           module:
             - if_mib
-          target: sw.home.local
+          target: 10.0.40.224
           interval: 1m
           scrapeTimeout: 1m
       path: /snmp
