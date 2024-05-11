@@ -30,6 +30,7 @@ spec:
       enabled: true
       params:
         - name: switch
+          auth: [public_v2]
           module:
             - if_mib
           target: 10.0.40.224
