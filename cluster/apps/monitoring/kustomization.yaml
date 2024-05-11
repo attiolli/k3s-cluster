@@ -9,3 +9,4 @@ resources:
   - speedtest-exporter
   - syslog
   - influxdb
+  - snmp-exporter

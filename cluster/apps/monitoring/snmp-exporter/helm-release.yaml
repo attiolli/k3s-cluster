@@ -1,0 +1,43 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &app snmp-exporter
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: prometheus-snmp-exporter
+      version: 5.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    fullnameOverride: *app
+    image:
+      repository: quay.io/prometheus/snmp-exporter
+      tag: main@sha256:2130a48545b5bcb855f1bcfd2c16aaac9317c05d7a6b128eed2df17ae44342fc
+    serviceMonitor:
+      enabled: true
+      params:
+        - name: switch
+          module:
+            - if_mib
+          target: sw.home.local
+          interval: 1m
+          scrapeTimeout: 1m
+      path: /snmp
+      scrapeTimeout: 10s
+      relabelings:
+        - action: labeldrop
+          regex: (pod)
