@@ -104,6 +104,9 @@ spec:
         speedtest:
           url: https://raw.githubusercontent.com/attiolli/k3s-cluster/main/cluster/apps/monitoring/grafana/dashboards/speedtest_exporter.json
           datasource: Prometheus
+        snmp:
+          url: https://raw.githubusercontent.com/attiolli/k3s-cluster/main/cluster/apps/monitoring/grafana/dashboards/snmp_exporter.json
+          datasource: Prometheus
       k8s:
         #Ref: https://grafana.com/grafana/dashboards/2842
         flux-cluster:
