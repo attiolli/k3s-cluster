@@ -83,7 +83,6 @@ spec:
               - path: /
                 service:
                   identifier: app
-                  pathType: Prefix
                   port: http
         tls:
           - hosts:
