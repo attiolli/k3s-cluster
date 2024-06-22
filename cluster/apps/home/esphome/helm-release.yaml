@@ -31,11 +31,11 @@ spec:
       namespace: storage
   values:
     controllers:
-      main:
+      esph:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: esphome/esphome
               tag: 2024.6.1
@@ -63,26 +63,26 @@ spec:
               effect: "NoSchedule"
 
     service:
-      main:
+      app:
+        controller: esph
         ports:
           http:
             port: *port
 
     ingress:
-      main:
+      app:
         annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
           nginx.ingress.kubernetes.io/auth-type: basic
           nginx.ingress.kubernetes.io/auth-secret: basic-auth
           nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
-        enabled: true
         className: "nginx"
         hosts:
           - host: *host
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   pathType: Prefix
                   port: http
         tls:
