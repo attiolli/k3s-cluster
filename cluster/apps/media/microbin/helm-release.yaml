@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,11 +27,11 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      microbin:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: docker.io/danielszabo99/microbin
               tag: 2.0.4@sha256:c5bd4643135540a68a2846950fe4f65f3bcc94b62ed7c7644e563dfde6f1732c
@@ -82,21 +82,21 @@ spec:
               value: "false"
               effect: "NoSchedule"
     service:
-      main:
+      app:
+        controller: microbin
         ports:
           http:
             port: &port 80
 
     ingress:
-      main:
-        enabled: true
+      app:
         className: "nginx"
         hosts:
           - host: &host "p.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:

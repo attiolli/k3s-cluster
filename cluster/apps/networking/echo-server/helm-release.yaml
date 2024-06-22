@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,13 +27,13 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      echoserver:
         annotations:
           reloader.stakater.com/auto: "true"
         replicas: 3
         strategy: RollingUpdate
         containers:
-          main:
+          app:
             image:
               repository: docker.io/jmalloc/echo-server
               tag: 0.3.6
@@ -75,23 +75,23 @@ spec:
             runAsNonRoot: true
 
     service:
-      main:
+      app:
+        controller: echoserver
         ports:
           http:
             port: *port
 
     ingress:
-      main:
+      app:
         annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-        enabled: true
         className: nginx
         hosts:
           - host: &host "echo.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:

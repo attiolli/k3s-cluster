@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -29,11 +29,11 @@ spec:
     cleanupOnFail: true
   values:
     controllers:
-      main:
+      syslog:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/linuxserver/syslog-ng
               tag: 4.7.1
@@ -58,8 +58,8 @@ spec:
               effect: "NoSchedule"
       
     service:
-      main:
-        enabled: true
+      app:
+        controller: syslog
         type: LoadBalancer
         externalTrafficPolicy: Local
         annotations:

@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,12 +25,12 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      sysupgrade:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: docker.io/rancher/system-upgrade-controller
               tag: v0.13.4
@@ -79,7 +79,8 @@ spec:
       name: system-upgrade
 
     service:
-      main:
+      app:
+        controller: sysupgrade
         enabled: false
         
     persistence:

@@ -33,11 +33,11 @@ spec:
       namespace: storage
   values:
     controllers:
-      main:
+      z2m:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
              image:
                repository: ghcr.io/koenkk/zigbee2mqtt
                tag: 1.38.0
@@ -83,28 +83,27 @@ spec:
        
 
     service:
-      main:
+      app:
+        controller: z2m
         ports:
           http:
             port: 8082
 
     ingress:
-      main:
+      app:
         annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
           nginx.ingress.kubernetes.io/auth-type: basic
           nginx.ingress.kubernetes.io/auth-secret: basic-auth
           nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
-        enabled: true
         className: nginx
         hosts:
           - host: &host "z2m.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
-                  pathType: Prefix
         tls:
           - hosts:
               - *host

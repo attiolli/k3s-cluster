@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -31,11 +31,11 @@ spec:
     cleanupOnFail: true
   values:
     controllers:
-      main:
+      alertmanager:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: janwh/alertmanager-telegram
               tag: latest
@@ -57,7 +57,8 @@ spec:
                 cpu: 20m
                 memory: 100Mi
     service:
-      main:
+      app:
+        controller: alertmanager
         ports:
           http:
             port: 8080

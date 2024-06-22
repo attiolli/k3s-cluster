@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -22,11 +22,11 @@ spec:
       retries: 5
   values:
     controllers:
-      main:
+      nodered:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/k8s-at-home/node-red
               tag: v3.0.2
@@ -51,27 +51,27 @@ spec:
 
 
     service:
-      main:
+      app:
+        controller: nodered
         ports:
           http:
             port: 1880
 
     ingress:
-      main:
+      app:
         annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
           nginx.ingress.kubernetes.io/auth-type: basic
           nginx.ingress.kubernetes.io/auth-secret: basic-auth
           nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
-        enabled: true
         className: nginx
         hosts:
           - host: &host "noder.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
-                  name: main
-                  pathType: Prefix
+                  identifier: app
+
         tls:
           - hosts:
               - *host

@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -24,9 +24,9 @@ spec:
     cleanupOnFail: true
   values:
     controllers:
-      main:
+      unifi:
         containers:
-          main:
+          app:
             image:
               repository: jacobalberty/unifi
               tag: v8.1.113
@@ -38,8 +38,8 @@ spec:
               effect: "NoSchedule"
 
     service:
-      main:
-        enabled: true
+      app:
+        controller: unifi
         type: LoadBalancer
         externalTrafficPolicy: Local
         annotations:
@@ -68,8 +68,7 @@ spec:
             protocol: UDP
 
     ingress:
-      main:
-        enabled: true
+      app:
         className: nginx
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
@@ -78,9 +77,8 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
-                  pathType: Prefix
         tls:
           - hosts:
               - *host

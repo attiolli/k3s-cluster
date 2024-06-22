@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,11 +25,11 @@ spec:
       namespace: home
   values:
     controllers:
-      main:
+      modbus2x:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: vaizki/modbus2x
               tag: 75d196e
@@ -64,7 +64,8 @@ spec:
               effect: "NoSchedule"
 
     service:
-      main:
+      app:
+        controller: modbus2x
         ports:
           http:
             port: 8080 # dummy port here

@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.2.1
       interval: 33m
       sourceRef:
         kind: HelmRepository
@@ -35,11 +35,11 @@ spec:
       namespace: storage
   values:
     controllers:
-      main:
+      frigate:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/blakeblackshear/frigate
               tag: 0.13.0-rc1@sha256:24dce42044a0f9631813beea9d49afb266e9bef77ed6972cd1486e14463d7dc6
@@ -74,7 +74,8 @@ spec:
               effect: "NoSchedule"
 
     service:
-      main:
+      app:
+        controller: frigate
         ports:
           http:
             port: *port
@@ -82,15 +83,14 @@ spec:
             port: 8554
 
     ingress:
-      main:
-        enabled: true
+      app:
         className: nginx
         hosts:
           - host: &host "frigate.${MAIN_DOMAIN}"
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
         tls:
           - hosts:
               - *host
