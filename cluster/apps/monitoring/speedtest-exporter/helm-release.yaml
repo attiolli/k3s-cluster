@@ -53,15 +53,13 @@ spec:
       app:
         controller: speedtest
         ports:
-          http:
-            enabled: false
           metrics:
             enabled: true
             protocol: TCP
             port: 9798
 
     serviceMonitor:
-      main:
+      app:
         enabled: true
         endpoints:
           - interval: 60m
