@@ -39,8 +39,6 @@ spec:
             image:
               repository: janwh/alertmanager-telegram
               tag: latest
-            global:
-              nameOverride: *app
             env:
               - name: TELEGRAM_CHAT_ID
                 valueFrom:
