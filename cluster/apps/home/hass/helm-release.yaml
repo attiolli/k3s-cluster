@@ -112,11 +112,10 @@ spec:
 
     persistence:
       config:
-        enabled: true
         existingClaim: hass-config-v4
         advancedMounts:
-          main:
-            main:
+          hass:
+            app:
               - path: /config
             code:
               - path: /config
