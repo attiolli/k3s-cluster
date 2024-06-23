@@ -90,7 +90,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: app
+                  identifier: hass
                   port: http
         tls:
           - hosts:
@@ -103,7 +103,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: code
+                  identifier: hass
                   port: code
         tls:
           - hosts:
