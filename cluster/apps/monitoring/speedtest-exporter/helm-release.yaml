@@ -60,7 +60,7 @@ spec:
 
     serviceMonitor:
       app:
-        enabled: true
+        serviceName: speedtest-exporter
         endpoints:
           - interval: 60m
             path: /metrics
