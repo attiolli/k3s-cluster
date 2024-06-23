@@ -62,8 +62,6 @@ spec:
         ipFamilies:
           - IPv4
         ports:
-          http:
-            enabled: false
           mqtt:
             enabled: true
             port: 1883
