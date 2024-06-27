@@ -6,7 +6,7 @@
     "github>attiolli/k3s-cluster//.github/renovate/pr-labels.json"
   ],
   "schedule": [
-    "after 4pm every weekday",
+    "after 11pm every weekday",
     "before 6am every weekday",
     "after 11pm every weekend",
     "before 6am every weekend"
@@ -21,5 +21,22 @@
   },
   "kubernetes": {
     "fileMatch": ["cluster/.+\\.ya?ml$"]
-  }
+  },
+  "packageRules": [
+    {
+      description: "Auto merge containers",
+      matchDatasources: ["docker"],
+      automerge: true,
+      automergeType: "branch",
+      ignoreTests: true,
+      matchUpdateTypes: ["minor","patch", "digest"]
+    },
+    {
+      matchDatasources: ["helm"],
+      automerge: true,
+      automergeType: "branch",
+      ignoreTests: true,
+      matchUpdateTypes: ["patch"]
+   }
+  ]
 }
