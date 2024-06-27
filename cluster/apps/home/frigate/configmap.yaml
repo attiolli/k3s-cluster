@@ -70,8 +70,7 @@ data:
         person:
           threshold: 0.7
           min_score: 0.6
-          min_area: 5000
-          max_area: 100000
+          min_area: 900
     
     go2rtc:
       streams:
