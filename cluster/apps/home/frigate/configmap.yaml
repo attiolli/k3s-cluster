@@ -77,8 +77,8 @@ data:
         frigate_etuovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_ETUOVI_IP}:554/h264Preview_01_sub"
         frigate_terassi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TERASSI_IP}:554/h264Preview_01_main"
         frigate_terassi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TERASSI_IP}:554/h264Preview_01_sub"
-        frigate_takaovi_main: "ffmpeg:https://${CAMERA_TAKAOVI_IP}:443/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${CAMERA_USERNAME}&password=${CAMERA_PASSWORD}#video=copy#audio=copy#audio=opus"
-        frigate_takaovi_sub: "ffmpeg:https://${CAMERA_TAKAOVI_IP}:443/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${CAMERA_USERNAME}&password=${CAMERA_PASSWORD}"
+        frigate_takaovi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_main"
+        frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
     
     cameras:
       frigate_etuovi:
@@ -106,9 +106,9 @@ data:
       frigate_takaovi:
         ffmpeg:
           inputs:
-            - path: rtsp://localhost:8554/frigate_takaovi_sub?video=copy
+            - path: rtsp://localhost:8554/frigate_takaovi_sub
               roles: ["detect"]
-            - path: rtsp://localhost:8554/frigate_takaovi_main?video=copy&audio=aac
+            - path: rtsp://localhost:8554/frigate_takaovi_main
               roles: ["record"]
         detect:
           width: 1280
