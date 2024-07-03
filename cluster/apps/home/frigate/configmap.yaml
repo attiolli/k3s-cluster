@@ -51,6 +51,7 @@ data:
         - person
         - cat
         - dog
+        - bird
       filters:
       # Generate filters from: Webui->Camera->Debug->Mask&ZoneCreator->Add
         cat:
