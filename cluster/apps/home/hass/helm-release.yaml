@@ -52,6 +52,10 @@ spec:
               tag: 4.91.0
             env:
               TZ: Europe/Helsinki
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              runAsNonRoot: false
             workingDir: /config
             args:
               - --auth
