@@ -55,13 +55,13 @@ data:
       filters:
       # Generate filters from: Webui->Camera->Debug->Mask&ZoneCreator->Add
         cat:
-          threshold: 0.78
+          threshold: 0.70
           min_score: 0.6
           mask:
             - 132,499,273,537,282,720,0,720,0,605,0,470
             - 447,0,195,87,260,164,417,154
         dog:
-          threshold: 0.78
+          threshold: 0.70
           min_score: 0.6
           mask:
             - 132,499,273,537,282,720,0,720,0,605,0,470
