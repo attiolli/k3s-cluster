@@ -37,6 +37,13 @@
       automergeType: "branch",
       ignoreTests: true,
       matchUpdateTypes: ["patch"]
-   }
+   },
+   {
+      matchDatasources: ["helm"],
+      automerge: false,
+      automergeType: "branch",
+      ignoreTests: true,
+      matchPackageNames: [ "multus"]
+    }
   ]
 }
