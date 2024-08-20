@@ -138,6 +138,11 @@ spec:
       ingress:
         enabled: true
         pathType: Prefix
+        annotations:
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: basic-auth
+          nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
         ingressClassName: "nginx"
         hosts:
           - &host "alerts.${MAIN_DOMAIN}"
@@ -173,8 +178,12 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: "nginx"
-#        annotations:
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        annotations:
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: basic-auth
+          nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
+          #traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - "prom.${MAIN_DOMAIN}"
         tls:
