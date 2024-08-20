@@ -58,10 +58,10 @@ spec:
       grafana_net:
         url: https://grafana.net
       #auth:
-      #disable_login_form: true
+      disable_login_form: false
       #oauth_auto_login: true
       auth.anonymous:
-        enabled: true
+        enabled: false
         org_name: Main Org.
         org_role: Viewer
         hide_version: true
