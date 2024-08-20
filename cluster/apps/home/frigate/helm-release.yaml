@@ -85,11 +85,6 @@ spec:
 
     ingress:
       app:
-        annotations:
-          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-          nginx.ingress.kubernetes.io/auth-type: basic
-          nginx.ingress.kubernetes.io/auth-secret: basic-auth
-          nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
         className: nginx
         hosts:
           - host: &host "frigate.${MAIN_DOMAIN}"
