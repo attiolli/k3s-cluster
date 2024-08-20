@@ -173,6 +173,8 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: "nginx"
+        annotations:
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.42.0.0/16, 10.43.0.0/16, 10.0.40.0/24"
 #        annotations:
 #          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
