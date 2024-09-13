@@ -25,7 +25,7 @@ spec:
       namespace: networking
   values:
     controllers:
-      unifi-network-scanner:
+      unifi-client-scanner:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
