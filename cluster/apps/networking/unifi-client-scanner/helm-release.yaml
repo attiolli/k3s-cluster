@@ -35,18 +35,16 @@ spec:
               tag: latest
             env:
               TZ: Europe/Helsinki
-              MODBUS_MQTT_USERNAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: mosquitto-secret
-                    key: username
-              MODBUS_MQTT_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: mosquitto-secret
-                    key: password
-              MODBUS_MQTT_PUBLISH_INTERVAL: 15
-              MODBUS_HA_EXPIRE_AFTER: 35
+              CONTROLLER_URL: "${UCS_CONTROLLER_URL}"
+              USERNAME: "${UCS_USERNAME}"
+              PASSWORD: "${UCS_PASSWORD}"
+              SITE_ID: "${UCS_SITE_ID}"
+              EMAIL_SENDER: "${UCS_EMAIL_SENDER}"
+              SMTP_USERNAME: "${UCS_SMTP_USERNAME}"
+              SMTP_PASSWORD: "${UCS_SMTP_PASSWORD}"
+              EMAIL_RECIPIENT: "${UCS_EMAIL_RECIPIENT}"
+              SMTP_SERVER: "${UCS_SMTP_SERVER}"
+              SMTP_PORT: 465
             probes:
               liveness:
                 enabled: false
