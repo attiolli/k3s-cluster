@@ -56,7 +56,7 @@ data:
       filters:
       # Generate filters from: Webui->Camera->Debug->Mask&ZoneCreator->Add
         car:
-          threshold: 0.75
+          threshold: 20
         cat:
           threshold: 0.70
           min_score: 0.6
