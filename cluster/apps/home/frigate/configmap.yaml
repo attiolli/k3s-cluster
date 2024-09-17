@@ -57,7 +57,6 @@ data:
       # Generate filters from: Webui->Camera->Debug->Mask&ZoneCreator->Add
         car:
           threshold: 20
-          contour_area: 500
           mask:
             - 447,0,195,87,260,164,417,154
         cat:
