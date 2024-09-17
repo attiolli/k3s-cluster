@@ -93,8 +93,6 @@ data:
           width: 1280
           height: 720
           fps: 10
-        motion:
-          contour_area: 300
       frigate_terassi:
         ffmpeg:
           inputs:
