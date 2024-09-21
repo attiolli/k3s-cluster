@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: attley86/unifi-client-scanner
-              imagePullPolicy: Always
+              pullPolicy: Always
               tag: latest
             env:
               TZ: Europe/Helsinki
