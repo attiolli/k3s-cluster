@@ -47,10 +47,17 @@ spec:
               SMTP_SERVER: "${UCS_SMTP_SERVER}"
               SMTP_PORT: 465
             probes:
-              liveness:
-                enabled: false
-              readiness:
-                enabled: false
+              liveness: &probes
+                enabled: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8080
+                  initialDelaySeconds: 10
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 4
+              readiness: *probes
               startup:
                 enabled: false
         pod:
@@ -65,4 +72,4 @@ spec:
         controller: unifi-client-scanner
         ports:
           http:
-            port: 8080 # health check port
+            port: *port
