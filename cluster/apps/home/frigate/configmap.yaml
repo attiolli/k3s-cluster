@@ -80,6 +80,8 @@ data:
         frigate_terassi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TERASSI_IP}:554/h264Preview_01_sub"
         frigate_takaovi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_main"
         frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
+        frigate_tuulietu_main: "rtsp://${CAMERA_TUULI_USERNAME}:${CAMERA_TUULI_PASSWORD}@${CAMERA_TUULIETU_IP}:554/h264Preview_01_main"
+        frigate_tuulietu_sub: "rtsp://${CAMERA_TUULI_USERNAME}:${CAMERA_TUULI_PASSWORD}@${CAMERA_TUULIETU_IP}:554/h264Preview_01_sub"
     
     cameras:
       frigate_etuovi:
@@ -111,6 +113,32 @@ data:
               roles: ["detect"]
             - path: rtsp://localhost:8554/frigate_takaovi_main
               roles: ["record"]
+        detect:
+          width: 1280
+          height: 720
+          fps: 10
+      frigate_tuulietu:
+        ffmpeg:
+          inputs:
+            - path: rtsp://localhost:8554/frigate_tuulietu_sub
+              roles: ["detect"]
+            - path: rtsp://localhost:8554/frigate_tuulietu_main
+              roles: ["record"]
+        record:
+          enabled: true
+          retain:
+            days: 2
+            mode: all
+          events:
+            objects:
+              - person
+              - car
+              - cat
+              - dog
+              - motorcycle
+            retain:
+              default: 5
+              mode: active_objects
         detect:
           width: 1280
           height: 720
