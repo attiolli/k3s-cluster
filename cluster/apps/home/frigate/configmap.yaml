@@ -128,7 +128,7 @@ data:
           enabled: true
           retain:
             days: 2
-            mode: all
+            mode: motion
           events:
             objects:
               - person
