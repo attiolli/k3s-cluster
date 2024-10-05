@@ -121,9 +121,7 @@ data:
         ffmpeg:
           inputs:
             - path: rtsp://localhost:8554/frigate_tuulietu_sub
-              roles: ["detect"]
-            - path: rtsp://localhost:8554/frigate_tuulietu_main
-              roles: ["record"]
+              roles: ["detect", "record"]
         record:
           enabled: true
           retain:
