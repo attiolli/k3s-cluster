@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - pvc.yaml
   - net-attach.yaml
+  - configmap.yaml
   - helm-release.yaml
