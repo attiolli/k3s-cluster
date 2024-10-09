@@ -122,18 +122,19 @@ data:
           inputs:
             - path: rtsp://localhost:8554/frigate_tuulietu_sub
               roles: ["detect", "record"]
+        objects:
+          track:
+            - person
+            - cat
+            - dog
+            - car
+            - motorcycle
         record:
           enabled: true
           retain:
             days: 2
             mode: all
           events:
-            objects:
-              - person
-              - car
-              - cat
-              - dog
-              - motorcycle
             retain:
               default: 5
               mode: active_objects
