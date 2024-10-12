@@ -128,7 +128,19 @@ data:
             - cat
             - dog
             - car
-            - motorcycle
+          filters:
+            cat:
+              threshold: 0.72
+              min_score: 0.6
+            dog:
+              threshold: 0.72
+              min_score: 0.6
+            person:
+              threshold: 0.72
+              min_score: 0.6
+            car:
+              threshold: 0.74
+              min_score: 0.6
         record:
           enabled: true
           retain:
