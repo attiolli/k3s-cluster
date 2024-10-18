@@ -130,16 +130,16 @@ data:
             - car
           filters:
             cat:
-              threshold: 0.72
+              threshold: 0.70
               min_score: 0.6
             dog:
-              threshold: 0.72
+              threshold: 0.70
               min_score: 0.6
             person:
-              threshold: 0.72
+              threshold: 0.70
               min_score: 0.6
             car:
-              threshold: 0.74
+              threshold: 0.76
               min_score: 0.6
         record:
           enabled: true
