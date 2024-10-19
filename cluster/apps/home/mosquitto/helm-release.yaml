@@ -44,13 +44,12 @@ spec:
                 memory: 64M
               limits:
                 memory: 64M
+            securityContext:
+              runAsNonRoot: false
+              readOnlyRootFilesystem: false
+              privileged: true
+              allowPrivilegeEscalation: true
         pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            runAsNonRoot: true
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
           tolerations:
             - key: "master"
               operator: "Equal"
