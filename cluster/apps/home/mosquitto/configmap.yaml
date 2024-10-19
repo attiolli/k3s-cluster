@@ -9,8 +9,8 @@ data:
     listener 1883
     allow_anonymous false
     persistence true
-    persistence_location /data/mosquitto
+    persistence_location /data
     password_file /ext_mount/secret/mosquitto_pwd
     autosave_interval 1800
-    connection_messages true
+    connection_messages false
     autosave_interval 60
