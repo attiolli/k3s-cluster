@@ -6,10 +6,7 @@ metadata:
 data:
   config.yml: |
     logger:
-      default: info
-      # logs:
-      #   frigate.record: debug
-    
+      default: info   
     mqtt:
       host: "${SVC_MQTT_ADDR}"
       topic_prefix: frigate
@@ -26,8 +23,6 @@ data:
     
     ffmpeg:
       global_args: ["-hide_banner", "-loglevel", "warning"]
-      #hwaccel_args: ["-hwaccel", "vaapi", "-hwaccel_device", "/dev/dri/renderD128", "-hwaccel_output_format", "yuv420p"]
-      #hwaccel_args: preset-vaapi
     snapshots:
       enabled: true
       timestamp: false
