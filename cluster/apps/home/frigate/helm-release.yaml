@@ -46,7 +46,7 @@ spec:
               tag: 0.14.1@sha256:22e3d0b486df52c3d669682254c2b1bf4205fa6ad8bd8f8c9f7fe76b1517005d
             env:
               TZ: Europe/Helsinki
-              LIBVA_DRIVER_NAME: i965
+              #LIBVA_DRIVER_NAME: i965
             securityContext:
               privileged: true
             probes:
