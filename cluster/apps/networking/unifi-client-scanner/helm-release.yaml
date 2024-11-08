@@ -33,7 +33,7 @@ spec:
             image:
               repository: attley86/unifi-client-scanner
               pullPolicy: Always
-              tag: latest
+              tag: 0.0.1
             env:
               TZ: Europe/Helsinki
               CONTROLLER_URL: "${UCS_CONTROLLER_URL}"
