@@ -5,7 +5,7 @@ resources:
   - system
   - kube-system
   - networking
-  #- cert-manager
+  - cert-manager
   - media
   - home
   - monitoring
