@@ -9,4 +9,4 @@ resources:
   - media
   - home
   - monitoring
-  - system-upgrade
+  #- system-upgrade
