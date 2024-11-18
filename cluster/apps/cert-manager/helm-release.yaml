@@ -17,15 +17,18 @@ spec:
         namespace: flux-system
   maxHistory: 2
   install:
+    crds: CreateReplace
     createNamespace: true
     remediation:
       retries: 3
   upgrade:
+    crds: CreateReplace
     cleanupOnFail: true
     remediation:
       retries: 3
   values:
-    installCRDs: true
+    crds:
+      enabled: true
     webhook:
     extraArgs:
       - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
