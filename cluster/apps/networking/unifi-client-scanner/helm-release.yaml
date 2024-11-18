@@ -20,9 +20,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: unifi
-      namespace: networking
   values:
     controllers:
       unifi-client-scanner:
