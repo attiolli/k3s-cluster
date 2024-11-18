@@ -69,6 +69,12 @@ spec:
         runAsUser: 568
         runAsGroup: 568
       tolerations:
+        - key: "master"
+          operator: "Exists"
+          effect: "NoSchedule"
+        - key: "master"
+          operator: "Exists"
+          effect: "NoExecute"
         - key: CriticalAddonsOnly
           operator: Exists
         - key: node-role.kubernetes.io/control-plane
