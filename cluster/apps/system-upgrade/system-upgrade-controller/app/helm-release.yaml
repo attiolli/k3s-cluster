@@ -62,26 +62,18 @@ spec:
                     - key: node-role.kubernetes.io/control-plane
                       operator: Exists
           tolerations:
-            - key: "master"
-              operator: "Exists"
-              effect: "NoSchedule"
-            - key: "master"
-              operator: "Exists"
-              effect: "NoExecute"
-            - {key: CriticalAddonsOnly, operator: Exists}
-            - {key: node-role.kubernetes.io/master, operator: Exists, effect: NoSchedule}
-            - {key: node-role.kubernetes.io/controlplane, operator: Exists, effect: NoSchedule}
-            - {key: node-role.kubernetes.io/control-plane, operator: Exists, effect: NoSchedule}
-            - {key: node-role.kubernetes.io/etcd, operator: Exists, effect: NoExecute}
+            - key: CriticalAddonsOnly
+              operator: Exists
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+              effect: NoSchedule
+            - key: node-role.kubernetes.io/master
+              operator: Exists
+              effect: NoSchedule
               
     serviceAccount:
       create: true
       name: system-upgrade
-
-    service:
-      app:
-        controller: sysupgrade
-        enabled: false
         
     persistence:
       tmp:
