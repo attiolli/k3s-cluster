@@ -17,12 +17,12 @@ spec:
         namespace: flux-system
   values:
     enabled: true
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
+    #controller:
+    #  annotations:
+    #    reloader.stakater.com/auto: "true"
     installCRDs: true
     webhook:
-      enabled: true
+    # enabled: true
     extraArgs:
       - --dns01-recursive-nameservers=1.1.1.1:53,8.8.4.4:53
       - --dns01-recursive-nameservers-only
