@@ -101,9 +101,6 @@ spec:
               tlsSkipVerify: true
     dashboards:
       default:
-        speedtest:
-          url: https://raw.githubusercontent.com/attiolli/k3s-cluster/main/cluster/apps/monitoring/grafana/dashboards/speedtest_exporter.json
-          datasource: Prometheus
         snmp:
           url: https://raw.githubusercontent.com/attiolli/k3s-cluster/main/cluster/apps/monitoring/grafana/dashboards/snmp_exporter.json
           datasource: Prometheus
