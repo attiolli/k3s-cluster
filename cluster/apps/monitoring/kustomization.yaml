@@ -6,7 +6,6 @@ resources:
   - alert-manager
   - prom-stack
   - grafana
-  - speedtest-exporter
   - syslog
   - influxdb
   - snmp-exporter
