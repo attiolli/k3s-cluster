@@ -40,7 +40,7 @@ spec:
                   - key: "kubernetes.io/hostname"
                     operator: In
                     values:
-                      - k8s-worker3
+                      - k8s-worker2
     controllers:
       hass:
         annotations:
