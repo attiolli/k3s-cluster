@@ -163,28 +163,28 @@ spec:
               - severity = "critical"
             target_matchers:
               - severity = "warning"
-        ingress:
-          enabled: true
-          pathType: Prefix
-          ingressClassName: "nginx"
-          annotations:
-            nginx.ingress.kubernetes.io/whitelist-source-range: "10.42.0.0/16, 10.43.0.0/16, 10.0.40.0/24"
-          hosts:
-            - &host "alerts.${MAIN_DOMAIN}"
-          tls:
-            - hosts:
-                - *host
-        alertmanagerSpec:
-          replicas: 1
-          storage:
-            volumeClaimTemplate:
-              spec:
-                storageClassName: nfs-client-bgp
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 1Gi
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: "nginx"
+        annotations:
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.42.0.0/16, 10.43.0.0/16, 10.0.40.0/24"
+        hosts:
+          - &host "alerts.${MAIN_DOMAIN}"
+        tls:
+          - hosts:
+              - *host
+      alertmanagerSpec:
+        replicas: 1
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-client-bgp
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
     prometheusOperator:
       resources:
         requests:
