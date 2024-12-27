@@ -4,8 +4,8 @@ resources:
   - namespace.yaml
   - secret.sops.yaml
   - alert-manager
-  #- prom-stack
-  #- grafana
+  - prom-stack
+  - grafana
   - syslog
   - influxdb
   - snmp-exporter
