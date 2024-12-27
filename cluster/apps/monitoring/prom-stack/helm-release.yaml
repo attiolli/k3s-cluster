@@ -164,11 +164,11 @@ spec:
             target_matchers:
               - severity = "warning"
         ingress:
-          enabled: true
+          enabled: false
           pathType: Prefix
           ingressClassName: "nginx"
-          #annotations:
-          #  nginx.ingress.kubernetes.io/whitelist-source-range: "10.42.0.0/16, 10.43.0.0/16, 10.0.40.0/24"
+          annotations:
+            nginx.ingress.kubernetes.io/whitelist-source-range: "10.42.0.0/16, 10.43.0.0/16, 10.0.40.0/24"
           hosts:
             - &host "alerts.${MAIN_DOMAIN}"
           tls:
