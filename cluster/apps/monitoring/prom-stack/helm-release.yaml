@@ -164,7 +164,7 @@ spec:
             target_matchers:
               - severity = "warning"
         ingress:
-          enabled: false
+          enabled: true
           pathType: Prefix
           ingressClassName: "nginx"
           annotations:
