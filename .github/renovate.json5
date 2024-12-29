@@ -46,6 +46,24 @@
       matchPackageNames: [
         "ghcr.io/k8snetworkplumbingwg/multus-cni"
       ]
+    },
+    {
+      matchDatasources: ["docker"],
+      automerge: false,
+      automergeType: "branch",
+      ignoreTests: true,
+      matchPackageNames: [
+        "ghcr.io/koenkk/zigbee2mqtt"
+      ]
+    },
+    {
+      matchDatasources: ["docker"],
+      automerge: false,
+      automergeType: "branch",
+      ignoreTests: true,
+      matchPackageNames: [
+        "ghcr.io/home-assistant/home-assistant"
+      ]
     }
   ]
 }
