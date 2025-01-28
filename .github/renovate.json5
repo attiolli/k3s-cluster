@@ -53,6 +53,15 @@
       automergeType: "branch",
       ignoreTests: true,
       matchPackageNames: [
+        "docker.io/rancher/hardened-cni-plugins"
+      ]
+    },
+    {
+      matchDatasources: ["docker"],
+      automerge: false,
+      automergeType: "branch",
+      ignoreTests: true,
+      matchPackageNames: [
         "ghcr.io/koenkk/zigbee2mqtt"
       ]
     },
