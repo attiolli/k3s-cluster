@@ -42,8 +42,13 @@ spec:
               limits:
                 memory: 4096Mi
         pod:
-          #annotations:
-          #  k8s.v1.cni.cncf.io/networks: lms-static2
+          annotations:
+            k8s.v1.cni.cncf.io/networks: |
+              [{
+                "name":"multus-mgmt",
+                "namespace": "system",
+                "ips": ["10.0.40.18/24"]
+              }]
           tolerations:
             - key: "master"
               operator: "Equal"
