@@ -33,7 +33,7 @@ spec:
         containers:
           app:
             image:
-              repository: lmscommunity/logitechmediaserver
+              repository: lmscommunity/lyrionmusicserver
               tag: 9.0.0
             resources:
               requests:
