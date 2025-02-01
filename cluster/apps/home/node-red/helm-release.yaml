@@ -21,17 +21,6 @@ spec:
     remediation:
       retries: 5
   values:
-    defaultPodOptions:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              preference:
-                matchExpressions:
-                  - key: "kubernetes.io/hostname"
-                    operator: In
-                    values:
-                      - k8s-worker3
     controllers:
       nodered:
         annotations:

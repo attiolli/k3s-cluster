@@ -32,17 +32,6 @@ spec:
     - name: csi-driver-nfs2
       namespace: storage
   values:
-    defaultPodOptions:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              preference:
-                matchExpressions:
-                  - key: "kubernetes.io/hostname"
-                    operator: In
-                    values:
-                      - k8s-worker3
     controllers:
       z2m:
         annotations:
