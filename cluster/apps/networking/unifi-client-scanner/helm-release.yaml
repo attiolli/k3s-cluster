@@ -58,6 +58,8 @@ spec:
               startup:
                 enabled: false
         pod:
+          nodeSelector:
+            kubernetes.io/hostname: "k8s-worker2"
           tolerations:
             - key: "master"
               operator: "Equal"
