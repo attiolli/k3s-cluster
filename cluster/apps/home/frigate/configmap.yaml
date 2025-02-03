@@ -28,39 +28,36 @@ data:
       timestamp: false
       bounding_box: true
       retain:
-        default: 2
+        default: 14
     
     record:
       enabled: true
       retain:
-        days: 30
+        days: 5
         mode: all
       events:
         retain:
-          default: 30
+          default: 5
           mode: active_objects
     
     objects:
       # Optional: list of objects to track from labelmap
       track:
         - person
-        - cat
-        - dog
-        - bird
       filters:
       # Generate filters from: Webui->Camera->Debug->Mask&ZoneCreator->Add
-        cat:
-          threshold: 0.70
-          min_score: 0.6
-          mask:
-            - 132,499,273,537,282,720,0,720,0,605,0,470
-            - 447,0,195,87,260,164,417,154
-        dog:
-          threshold: 0.70
-          min_score: 0.6
-          mask:
-            - 132,499,273,537,282,720,0,720,0,605,0,470
-            - 447,0,195,87,260,164,417,154
+        #cat:
+        #  threshold: 0.70
+        #  min_score: 0.6
+        #  mask:
+        #    - 132,499,273,537,282,720,0,720,0,605,0,470
+        #    - 447,0,195,87,260,164,417,154
+        #dog:
+        #  threshold: 0.70
+        #  min_score: 0.6
+        #  mask:
+        #    - 132,499,273,537,282,720,0,720,0,605,0,470
+        #    - 447,0,195,87,260,164,417,154
         person:
           threshold: 0.8
           min_score: 0.6
@@ -144,11 +141,11 @@ data:
         record:
           enabled: true
           retain:
-            days: 14
+            days: 2
             mode: all
           events:
             retain:
-              default: 14
+              default: 2
               mode: active_objects
         detect:
           width: 1280
