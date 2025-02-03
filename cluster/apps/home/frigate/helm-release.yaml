@@ -67,7 +67,7 @@ spec:
 
         pod:
           nodeSelector:
-            kubernetes.io/hostname: "k8s-worker2"
+            kubernetes.io/hostname: "k8s-worker4"
           tolerations:
             - key: "master"
               operator: "Equal"
