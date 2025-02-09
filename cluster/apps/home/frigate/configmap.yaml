@@ -143,10 +143,10 @@ data:
           retain:
             days: 2
             mode: all
-          events:
-            retain:
-              default: 2
-              mode: active_objects
+          #events:
+            #retain:
+              #default: 2
+              #mode: active_objects
         detect:
           width: 1280
           height: 720
