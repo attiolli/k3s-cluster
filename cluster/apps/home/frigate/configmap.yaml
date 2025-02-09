@@ -35,10 +35,10 @@ data:
       retain:
         days: 5
         mode: all
-      events:
-        retain:
-          default: 5
-          mode: active_objects
+      #events:
+      #  retain:
+      #    default: 5
+      #    mode: active_objects
     
     objects:
       # Optional: list of objects to track from labelmap
