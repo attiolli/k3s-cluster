@@ -78,3 +78,6 @@ spec:
         globalMounts:
           - path: /app/config.yml
             subPath: config.yml
+    
+    nodeSelector:
+      kubernetes.io/arch: amd64
