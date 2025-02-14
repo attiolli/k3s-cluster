@@ -35,7 +35,7 @@ spec:
               #tag: 75d196e
               repository: attley86/modbus2x
               tag: dev
-            imagePullPolicy: Always
+              pullPolicy: Always
             env:
               TZ: "${TZ}"
               MODBUS_DEBUG: yes
