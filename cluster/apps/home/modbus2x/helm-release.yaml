@@ -31,12 +31,12 @@ spec:
         containers:
           app:
             image:
-              #repository: vaizki/modbus2x
-              #tag: 75d196e
+              repository: vaizki/modbus2x
+              tag: 75d196e
               #repository: attley86/modbus2x
               #tag: main
-              repository: attley86/modbus2x
-              tag: amd64-main
+              #repository: attley86/modbus2x
+              #tag: amd64-main
               pullPolicy: Always
             env:
               TZ: "${TZ}"
