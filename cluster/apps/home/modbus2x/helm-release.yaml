@@ -31,10 +31,10 @@ spec:
         containers:
           app:
             image:
-              repository: vaizki/modbus2x
-              tag: 75d196e
-              #repository: attley86/modbus2x
-              #tag: main
+              #repository: vaizki/modbus2x
+              #tag: 75d196e
+              repository: attley86/modbus2x
+              tag: main
               #repository: attley86/modbus2x
               #tag: amd64-main
               pullPolicy: Always
@@ -63,7 +63,7 @@ spec:
                 enabled: false
         pod:
           nodeSelector:
-            kubernetes.io/arch: "amd64"
+            kubernetes.io/arch: "arm64"
           tolerations:
             - key: "master"
               operator: "Equal"
