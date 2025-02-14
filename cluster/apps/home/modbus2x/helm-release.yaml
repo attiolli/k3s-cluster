@@ -78,6 +78,13 @@ spec:
         globalMounts:
           - path: /app/config.yml
             subPath: config.yml
-    
-    nodeSelector:
-      kubernetes.io/arch: arm64
+
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - "arm64"
