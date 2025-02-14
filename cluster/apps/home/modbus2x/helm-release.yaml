@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: attley86/modbus2x
-              tag: 0.1.0
+              tag: dev
             env:
               TZ: "${TZ}"
               MODBUS_DEBUG: yes
