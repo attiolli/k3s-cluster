@@ -68,7 +68,7 @@ spec:
         controller: modbus2x
         ports:
           http:
-            port: 8080 # dummy port here
+            port: 8081 # dummy port here
 
     persistence:
       config:
