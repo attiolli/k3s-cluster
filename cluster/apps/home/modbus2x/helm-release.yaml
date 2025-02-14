@@ -31,8 +31,10 @@ spec:
         containers:
           app:
             image:
-              repository: vaizki/modbus2x
-              tag: 75d196e
+              #repository: vaizki/modbus2x
+              #tag: 75d196e
+              repository: attley86/modbus2x
+              tag: dev
             env:
               TZ: "${TZ}"
               MODBUS_DEBUG: yes
@@ -58,7 +60,7 @@ spec:
                 enabled: false
         pod:
           nodeSelector:
-            kubernetes.io/arch: "amd64"
+            kubernetes.io/arch: "arm64"
           tolerations:
             - key: "master"
               operator: "Equal"
