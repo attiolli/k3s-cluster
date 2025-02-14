@@ -57,6 +57,8 @@ spec:
               startup:
                 enabled: false
         pod:
+          nodeSelector:
+            kubernetes.io/arch: "arm64"
           tolerations:
             - key: "master"
               operator: "Equal"
@@ -78,5 +80,3 @@ spec:
         globalMounts:
           - path: /app/config.yml
             subPath: config.yml
-    nodeSelector:
-      arch: arm64
