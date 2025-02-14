@@ -31,8 +31,8 @@ spec:
         containers:
           app:
             image:
-              repository: vaizki/modbus2x
-              tag: 75d196e
+              repository: attley86/modbus2x
+              tag: 0.1.0
             env:
               TZ: "${TZ}"
               MODBUS_DEBUG: yes
@@ -80,4 +80,4 @@ spec:
             subPath: config.yml
     
     nodeSelector:
-      kubernetes.io/arch: amd64
+      kubernetes.io/arch: arm64
