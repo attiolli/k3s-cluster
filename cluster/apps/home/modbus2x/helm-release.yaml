@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.1
+      version: 3.6.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -35,8 +35,6 @@ spec:
               #tag: 75d196e
               repository: attley86/modbus2x
               tag: main
-              #repository: attley86/modbus2x
-              #tag: amd64-main
               pullPolicy: Always
             env:
               TZ: "${TZ}"
