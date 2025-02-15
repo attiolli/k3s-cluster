@@ -37,8 +37,10 @@ spec:
         containers:
           app:
             image:
-              repository: janwh/alertmanager-telegram
-              tag: latest
+              #repository: janwh/alertmanager-telegram
+              #tag: latest
+              repository: attley86/alertmanager-telegram
+              tag: main
             env:
               - name: TELEGRAM_CHAT_ID
                 valueFrom:
@@ -54,6 +56,9 @@ spec:
               requests:
                 cpu: 20m
                 memory: 100Mi
+        pod:
+          nodeSelector:
+            kubernetes.io/arch: "arm64"
     service:
       app:
         controller: alertmanager
