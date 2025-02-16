@@ -60,8 +60,8 @@ spec:
               startup:
                 enabled: false
         pod:
-          nodeSelector:
-            kubernetes.io/arch: "arm64"
+          #nodeSelector:
+          #  kubernetes.io/arch: "arm64"
           tolerations:
             - key: "master"
               operator: "Equal"
