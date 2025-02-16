@@ -30,7 +30,7 @@ spec:
             image:
               repository: attley86/unifi-client-scanner
               pullPolicy: Always
-              tag: 0.0.2
+              tag: main
             env:
               TZ: Europe/Helsinki
               CONTROLLER_URL: "${UCS_CONTROLLER_URL}"
@@ -58,8 +58,8 @@ spec:
               startup:
                 enabled: false
         pod:
-          nodeSelector:
-            kubernetes.io/hostname: "k8s-worker2"
+          #nodeSelector:
+          #  kubernetes.io/hostname: "k8s-worker2"
           tolerations:
             - key: "master"
               operator: "Equal"
