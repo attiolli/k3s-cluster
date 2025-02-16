@@ -56,9 +56,9 @@ spec:
               requests:
                 cpu: 20m
                 memory: 100Mi
-        pod:
-          nodeSelector:
-            kubernetes.io/arch: "arm64"
+        #pod:
+        #  nodeSelector:
+        #    kubernetes.io/arch: "arm64"
     service:
       app:
         controller: alertmanager
