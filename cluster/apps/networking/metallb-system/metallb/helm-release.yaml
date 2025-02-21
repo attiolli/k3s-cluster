@@ -1,11 +1,11 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
   namespace: metallb-system
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
       chart: metallb
@@ -14,25 +14,21 @@ spec:
         kind: HelmRepository
         name: metallb
         namespace: flux-system
+  maxHistory: 2
   install:
-    crds: CreateReplace
     createNamespace: true
     remediation:
-      retries: 5
+      retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
-      retries: 5
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    controller:
-      logLevel: warn
-    speaker:
-      tolerateMaster: true
-      logLevel: warn
-      frr:
-        enabled: true
-        image:
-          repository: docker.io/frrouting/frr
-          tag: v8.4.1
-          #tag: v8.4.0
     crds:
       enabled: true
+    speaker:
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
