@@ -37,8 +37,8 @@ spec:
         containers:
           app:
             image:
-              repository: esphome/esphome
-              tag: 2025.2.0
+              repository: ghcr.io/esphome/esphome
+              tag: 2025.2.0@sha256:11e1ffe8a55350938a3798b5efb092b5e9fa3d45dc49804432fe8b6af2a57a69
 
             env:
               ESPHOME_INSTANCE_NAME: ESPHome
