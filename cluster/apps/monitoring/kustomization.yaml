@@ -8,4 +8,4 @@ resources:
   - grafana
   - syslog
   - influxdb
-  - snmp-exporter
+  #- snmp-exporter
