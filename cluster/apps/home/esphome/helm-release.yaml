@@ -97,10 +97,3 @@ spec:
       config:
         enabled: true
         existingClaim: esph-config-v4
-      config-file-greeir:
-        enabled: true
-        type: configMap
-        name: esph-greeir-configmap
-        globalMounts:
-          - path: /config/gree_ir1.h
-            subPath: gree_ir1.h
