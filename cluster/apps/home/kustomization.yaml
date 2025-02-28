@@ -11,4 +11,4 @@ resources:
   - wyoming-piper
   - hass
   - node-red
-  - frigate
+  #- frigate
