@@ -75,6 +75,8 @@ spec:
                 "namespace": "system",
                 "ips": ["10.0.40.15/24"]
               }]
+          nodeSelector:
+            kubernetes.io/hostname: "k8s-worker5"
           tolerations:
             - key: "master"
               operator: "Equal"
