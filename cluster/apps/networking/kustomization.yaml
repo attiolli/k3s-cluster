@@ -6,4 +6,4 @@ resources:
   - metallb-system
   - nginx
   - unifi-client-scanner
-  - echo-server
+  #- echo-server
