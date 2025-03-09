@@ -45,8 +45,8 @@ spec:
       service:
         enabled: true
         type: LoadBalancer
-        annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.0.88.111
+        #annotations:
+        #  metallb.universe.tf/loadBalancerIPs: 10.0.88.111
         externalTrafficPolicy: Local
         ipFamilyPolicy: "SingleStack"
         ipFamilies:
