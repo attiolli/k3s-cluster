@@ -61,8 +61,8 @@ spec:
       app:
         controller: mosquitto
         type: LoadBalancer
-        annotations:
-          metallb.universe.tf/loadBalancerIPs: "${SVC_MQTT_ADDR}"
+        #annotations:
+        #  metallb.universe.tf/loadBalancerIPs: "${SVC_MQTT_ADDR}"
         externalTrafficPolicy: Local
         ipFamilyPolicy: "SingleStack"
         ipFamilies:
