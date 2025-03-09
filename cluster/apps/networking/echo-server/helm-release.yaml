@@ -81,19 +81,19 @@ spec:
           http:
             port: *port
 
-    ingress:
-      app:
-        annotations:
-          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-        className: nginx
-        hosts:
-          - host: &host "echo.${MAIN_DOMAIN}"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        tls:
-          - hosts:
-              - *host
+    #ingress:
+    #  app:
+    #    annotations:
+    #      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    #    className: nginx
+    #    hosts:
+    #      - host: &host "echo.${MAIN_DOMAIN}"
+    #        paths:
+    #          - path: /
+    #            service:
+    #              identifier: app
+    #              port: http
+    #    tls:
+    #      - hosts:
+    #          - *host
     
