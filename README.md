@@ -21,7 +21,7 @@ cluster
 
 Node   | Hostname | RAM | Storage | Function | OS
 ------ | -------- | --- | ------- | -------- | --
-Lenovo ThinkCentre M900 i5 | k8s-master1 | 8GB | 256GB NVMe | Kube Master | Debian 12
+Raspberry CM5 | k8s-master1 | 8GB | 250GB NVMe | Kube Master | Debian 12
 Raspberry CM5 | k8s-worker4 | 8GB | 120GB NVMe | Kube Worker | Debian 12
 Raspberry CM5 | k8s-worker5 | 8GB | 120GB NVMe | Kube Worker | Debian 12
 Raspberry CM5 | k8s-worker6 | 8GB | 120GB NVMe | Kube Worker | Debian 12
