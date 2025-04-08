@@ -31,7 +31,7 @@ spec:
               "cniVersion": "0.3.1",
               "logToStderr": true,
               "logLevel": "error",
-              "binDir": "/opt/cni/bin",
+              "binDir": "/var/lib/rancher/k3s/data/cni",
               "chrootDir": "/hostroot",
               "cniConfigDir": "/host/etc/cni/net.d",
               "confDir": "/host/etc/cni/net.d",
@@ -137,7 +137,7 @@ spec:
     persistence:
       cni:
         type: hostPath
-        hostPath: /etc/cni/net.d
+        hostPath: /var/lib/rancher/k3s/agent/etc/cni/net.d
         advancedMounts:
           uninstall:
             uninstall:
@@ -148,7 +148,7 @@ spec:
 
       cnibin:
         type: hostPath
-        hostPath: /opt/cni/bin
+        hostPath: /var/lib/rancher/k3s/data/cni
         advancedMounts:
           uninstall:
             uninstall:
@@ -163,7 +163,7 @@ spec:
               # e.g. if the cni bin is in '/opt/cni/bin' on the container host side, then it should be
               # mount to '/opt/cni/bin' in multus-daemon, not to any other directory, like '/opt/bin' or
               # '/usr/bin'.
-              - path: /opt/cni/bin
+              - path: /var/lib/rancher/k3s/data/cni
 
       config:
         type: configMap
