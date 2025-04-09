@@ -49,8 +49,8 @@ spec:
           multus-daemon:
             image: &multus-cni-image
               repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-              #tag: v4.1.4-thick
-              tag: v4.1.3-thick
+              tag: v4.1.4-thick
+              #tag: v4.1.3-thick
             env:
               MULTUS_NODE_NAME:
                 valueFrom:
