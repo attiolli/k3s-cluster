@@ -57,6 +57,13 @@ spec:
     service:
       app:
         controller: lms
+        type: LoadBalancer
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${SVC_LMS_ADDR}"
+        externalTrafficPolicy: Local
+        ipFamilyPolicy: "SingleStack"
+        ipFamilies:
+          - IPv4
         ports:
           http:
             port: 9000
