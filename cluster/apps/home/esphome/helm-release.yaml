@@ -53,13 +53,6 @@ spec:
               privileged: true
               allowPrivilegeEscalation: true
         pod:
-          # annotations:
-          #   k8s.v1.cni.cncf.io/networks: |
-          #     [{
-          #       "name":"multus-mgmt",
-          #       "namespace": "system",
-          #       "ips": ["10.0.40.17/24"]
-          #     }]
           tolerations:
             - key: "master"
               operator: "Equal"

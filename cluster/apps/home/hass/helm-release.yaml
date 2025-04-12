@@ -68,13 +68,6 @@ spec:
             probes: *probes
 
         pod:
-          # annotations:
-          #   k8s.v1.cni.cncf.io/networks: |
-          #     [{
-          #       "name":"multus-mgmt",
-          #       "namespace": "system",
-          #       "ips": ["10.0.40.15/24"]
-          #     }]
           nodeSelector:
             kubernetes.io/hostname: "k8s-worker5"
           tolerations:
