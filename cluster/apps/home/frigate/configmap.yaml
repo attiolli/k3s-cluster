@@ -80,6 +80,8 @@ data:
         frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
         frigate_tuulietu_main: "rtsp://${CAMERA_TUULI_USERNAME}:${CAMERA_TUULI_PASSWORD}@${CAMERA_TUULIETU_IP}:554/h264Preview_01_main"
         frigate_tuulietu_sub: "rtsp://${CAMERA_TUULI_USERNAME}:${CAMERA_TUULI_PASSWORD}@${CAMERA_TUULIETU_IP}:554/h264Preview_01_sub"
+        frigate_tuulitaka_main: "rtsp://${CAMERA_TUULI_USERNAME}:${CAMERA_TUULI_PASSWORD}@${CAMERA_TUULITAKA_IP}:554/h264Preview_01_main"
+        frigate_tuulitaka_sub: "rtsp://${CAMERA_TUULI_USERNAME}:${CAMERA_TUULI_PASSWORD}@${CAMERA_TUULITAKA_IP}:554/h264Preview_01_sub"
     
     cameras:
       frigate_varasto:
@@ -130,6 +132,11 @@ data:
         ffmpeg:
           inputs:
             - path: rtsp://localhost:8554/frigate_tuulietu_sub
+              roles: ["detect", "record"]
+      frigate_tuulitaka:
+        ffmpeg:
+          inputs:
+            - path: rtsp://localhost:8554/frigate_tuulitaka_sub
               roles: ["detect", "record"]
         #objects:
         #  track:
