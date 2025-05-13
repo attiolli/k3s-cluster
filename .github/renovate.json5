@@ -1,60 +1,80 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "github>attiolli/k3s-cluster//.github/renovate/commit-message.json",
-    "github>attiolli/k3s-cluster//.github/renovate/pr-labels.json"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'github>attiolli/k3s-cluster//.github/renovate/commit-message.json',
+    'github>attiolli/k3s-cluster//.github/renovate/pr-labels.json',
   ],
-  "schedule": [
-    "after 11pm every weekday",
-    "before 6am every weekday",
-    "after 11pm every weekend",
-    "before 6am every weekend"
+  schedule: [
+    'after 11pm every weekday',
+    'before 6am every weekday',
+    'after 11pm every weekend',
+    'before 6am every weekend',
   ],
-  "timezone": "Europe/Helsinki",
-  "prHourlyLimit": 5,
-  "flux": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  timezone: 'Europe/Helsinki',
+  prHourlyLimit: 5,
+  flux: {
+    managerFilePatterns: [
+      '/cluster/.+\\.ya?ml$/',
+    ],
   },
-  "helm-values": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  'helm-values': {
+    managerFilePatterns: [
+      '/cluster/.+\\.ya?ml$/',
+    ],
   },
-  "kubernetes": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  kubernetes: {
+    managerFilePatterns: [
+      '/cluster/.+\\.ya?ml$/',
+    ],
   },
-  "packageRules": [
+  packageRules: [
     {
-      description: "Auto merge containers",
-      matchDatasources: ["docker"],
+      description: 'Auto merge containers',
+      matchDatasources: [
+        'docker',
+      ],
       automerge: true,
-      automergeType: "branch",
+      automergeType: 'branch',
       ignoreTests: true,
-      matchUpdateTypes: ["minor","patch", "digest"]
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ],
     },
     {
-      matchDatasources: ["helm"],
+      matchDatasources: [
+        'helm',
+      ],
       automerge: true,
-      automergeType: "branch",
+      automergeType: 'branch',
       ignoreTests: true,
-      matchUpdateTypes: ["patch"]
-   },
-    {
-      matchDatasources: ["docker"],
-      automerge: false,
-      automergeType: "branch",
-      ignoreTests: true,
-      matchPackageNames: [
-        "ghcr.io/koenkk/zigbee2mqtt"
-      ]
+      matchUpdateTypes: [
+        'patch',
+      ],
     },
     {
-      matchDatasources: ["docker"],
+      matchDatasources: [
+        'docker',
+      ],
       automerge: false,
-      automergeType: "branch",
+      automergeType: 'branch',
       ignoreTests: true,
       matchPackageNames: [
-        "ghcr.io/home-assistant/home-assistant"
-      ]
-    }
-  ]
+        'ghcr.io/koenkk/zigbee2mqtt',
+      ],
+    },
+    {
+      matchDatasources: [
+        'docker',
+      ],
+      automerge: false,
+      automergeType: 'branch',
+      ignoreTests: true,
+      matchPackageNames: [
+        'ghcr.io/home-assistant/home-assistant',
+      ],
+    },
+  ],
 }
