@@ -41,6 +41,7 @@ spec:
             env:
               INFLUXDB_ADMIN_USER_PASSWORD: "${INFLUXDB_ADMIN_USER_PASSWORD}"
               INFLUXDB_ADMIN_USER_TOKEN: "${INFLUXDB_ADMIN_USER_TOKEN}"
+              INFLUXDB_NODE_ID: "${INFLUXDB_NODE_ID}"
             probes:
               liveness:
                 enabled: false
