@@ -52,7 +52,7 @@ spec:
                 ZIGBEE2MQTT_CONFIG_AVAILABILITY_: "true"
                 ZIGBEE2MQTT_CONFIG_DEVICE_OPTIONS_LEGACY: "false"
                 ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: &port 8082
-                ZIGBEE2MQTT_CONFIG_FRONTEND_URL: "https://zigbee.${MAIN_DOMAIN}"
+                ZIGBEE2MQTT_CONFIG_FRONTEND_URL: "https://z2m.${MAIN_DOMAIN}"
                 ZIGBEE2MQTT_CONFIG_HOMEASSISTANT_ENABLED: "true"
                 ZIGBEE2MQTT_CONFIG_MQTT_SERVER: "mqtt://${SVC_MQTT_ADDR}"
                 ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC: "zigbee2mqtt"
