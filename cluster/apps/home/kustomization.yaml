@@ -9,6 +9,6 @@ resources:
   - zigbee2mqtt
   - modbus2x
   - wyoming-piper
-  #- hass
+  - hass
   - node-red
   - frigate
