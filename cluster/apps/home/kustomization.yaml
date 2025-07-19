@@ -6,7 +6,7 @@ resources:
   - secret.sops.yaml
   - esphome
   - mosquitto
-  - zigbee2mqtt
+  #- zigbee2mqtt
   - modbus2x
   - wyoming-piper
   - hass
