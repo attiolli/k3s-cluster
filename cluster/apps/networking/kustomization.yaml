@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - metallb-system
   - nginx
-  #- unifi-client-scanner
-  #- echo-server
+  - unifi-client-scanner
+  - echo-server
