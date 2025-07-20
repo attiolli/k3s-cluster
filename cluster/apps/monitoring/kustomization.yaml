@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secret.sops.yaml
-  - alert-manager
+  #- alert-manager
   - prom-stack
   - grafana
-  - syslog
-  - influxdb
+  #- syslog
+  #- influxdb
   - snmp-exporter
