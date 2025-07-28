@@ -21,6 +21,9 @@ spec:
               repository: ghcr.io/linuxserver/syslog-ng
               tag: 4.8.3
               pullPolicy: IfNotPresent
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
             probes:
               liveness:
                 enabled: false
