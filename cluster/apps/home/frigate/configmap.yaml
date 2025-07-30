@@ -116,8 +116,8 @@ data:
             - path: rtsp://localhost:8554/frigate_etupiha_main
               roles: ["record"]
         detect:
-          width: 1280
-          height: 720
+          width: 2560
+          height: 1440
           fps: 10
       frigate_terassi:
         ffmpeg:
