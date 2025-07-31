@@ -115,6 +115,10 @@ data:
               roles: ["detect"]
             - path: rtsp://localhost:8554/frigate_etupiha_main
               roles: ["record"]
+        objects:
+          track:
+            - person
+            - car
         detect:
           width: 1280
           height: 720
