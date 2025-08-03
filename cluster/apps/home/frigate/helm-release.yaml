@@ -33,6 +33,11 @@ spec:
             env:
               TZ: Europe/Helsinki
               LIBVA_DRIVER_NAME: i965
+              PLUS_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: frigate-secret
+                    key: frigate_api_key
             securityContext:
               privileged: true
             probes:
