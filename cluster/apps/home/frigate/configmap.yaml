@@ -20,6 +20,10 @@ data:
       coral:
         type: edgetpu
         device: usb
+    lpr:
+      enabled: True
+      format: "^(?:[A-Z]{3} [0-9]{3}|[A-Z0-9]{4,6})$"
+      min_plate_length: 4
     
     ffmpeg:
       global_args: ["-hide_banner", "-loglevel", "warning"]
@@ -97,6 +101,8 @@ data:
           width: 1280
           height: 720
           fps: 10
+        lpr:
+          enabled: False
       frigate_etuovi:
         ffmpeg:
           inputs:
@@ -108,6 +114,8 @@ data:
           width: 1280
           height: 720
           fps: 10
+        lpr:
+          enabled: False
       frigate_etupiha:
         ffmpeg:
           inputs:
@@ -135,6 +143,8 @@ data:
           width: 1280
           height: 720
           fps: 10
+        lpr:
+          enabled: False
       frigate_takaovi:
         ffmpeg:
           inputs:
@@ -146,16 +156,22 @@ data:
           width: 1280
           height: 720
           fps: 10
+        lpr:
+          enabled: False
       frigate_tuulietu:
         ffmpeg:
           inputs:
             - path: rtsp://localhost:8554/frigate_tuulietu_sub
               roles: ["detect", "record"]
+        lpr:
+          enabled: False
       frigate_tuulitaka:
         ffmpeg:
           inputs:
             - path: rtsp://localhost:8554/frigate_tuulitaka_sub
               roles: ["detect", "record"]
+        lpr:
+          enabled: False
         #objects:
         #  track:
         #    - person
