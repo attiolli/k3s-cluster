@@ -22,7 +22,7 @@ data:
         device: usb
     lpr:
       enabled: True
-      format: "^(?:[A-Z]{3} [0-9]{3}|[A-Z0-9]{4,6})$"
+      format: "^(?:[A-Z]{3}\-[0-9]{3})$"
       min_plate_length: 4
     
     ffmpeg:
