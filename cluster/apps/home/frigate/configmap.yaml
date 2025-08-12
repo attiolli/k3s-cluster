@@ -34,6 +34,9 @@ data:
       retain:
         default: 30
     
+    detect:
+      enabled: true
+    
     record:
       enabled: true
       retain:
