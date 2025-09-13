@@ -42,6 +42,8 @@ spec:
               capabilities:
                 drop:
                   - ALL
+        serviceAccount:
+          name: system-upgrade-controller
 
     defaultPodOptions:
       affinity:
