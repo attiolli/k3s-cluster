@@ -7,8 +7,8 @@ metadata:
   labels:
     k3s-upgrade: server
 spec:
-  version: "v1.31.11+k3s1"
-  serviceAccountName: system-upgrade
+  version: "v1.31.12+k3s1"
+  serviceAccountName: system-upgrade-controller
   concurrency: 1
   cordon: true
   nodeSelector:
