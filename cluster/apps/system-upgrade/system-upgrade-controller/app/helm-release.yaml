@@ -67,6 +67,8 @@ spec:
         - {key: node-role.kubernetes.io/controlplane, operator: Exists, effect: NoSchedule}
 
     serviceAccount:
+      create: true
+      name: system-upgrade
       system-upgrade: {}
 
     rbac:
