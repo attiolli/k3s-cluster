@@ -67,18 +67,22 @@ spec:
         - {key: node-role.kubernetes.io/controlplane, operator: Exists, effect: NoSchedule}
 
     serviceAccount:
-      name: system-upgrade
-      system-upgrade: {}
+      system-upgrade-controller: {}
 
     rbac:
       bindings:
-        system-upgrade:
+        system-upgrade-controller:
           type: ClusterRoleBinding
           roleRef:
             kind: ClusterRole
             name: cluster-admin
           subjects:
-            - identifier: system-upgrade
+            - identifier: *app
+    
+    service:
+      app:
+        controller: *app
+        enabled: false
         
     persistence:
       tmp:
