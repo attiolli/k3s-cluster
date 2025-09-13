@@ -43,7 +43,7 @@ spec:
                 drop:
                   - ALL
         serviceAccount:
-          name: system-upgrade-controller
+          name: system-upgrade
 
     defaultPodOptions:
       affinity:
@@ -68,24 +68,7 @@ spec:
         - {key: node-role.kubernetes.io/master, operator: Exists, effect: NoSchedule}
         - {key: node-role.kubernetes.io/controlplane, operator: Exists, effect: NoSchedule}
 
-    serviceAccount:
-      system-upgrade-controller: {}
-
-    rbac:
-      bindings:
-        system-upgrade-controller:
-          type: ClusterRoleBinding
-          roleRef:
-            kind: ClusterRole
-            name: cluster-admin
-          subjects:
-            - identifier: *app
-    
-    service:
-      app:
-        controller: *app
-        enabled: false
-        
+       
     persistence:
       tmp:
         type: emptyDir
