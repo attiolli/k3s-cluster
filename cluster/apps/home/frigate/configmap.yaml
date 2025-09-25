@@ -106,6 +106,8 @@ data:
           fps: 10
         lpr:
           enabled: False
+        record:
+          enabled: false
       frigate_etuovi:
         ffmpeg:
           inputs:
@@ -148,6 +150,11 @@ data:
           fps: 10
         lpr:
           enabled: False
+        record:
+          enabled: true
+          retain:
+            days: 14
+            mode: motion
       frigate_takaovi:
         ffmpeg:
           inputs:
@@ -161,6 +168,11 @@ data:
           fps: 10
         lpr:
           enabled: False
+        record:
+          enabled: true
+          retain:
+            days: 14
+            mode: motion
       frigate_tuulietu:
         ffmpeg:
           inputs:
@@ -168,6 +180,11 @@ data:
               roles: ["detect", "record"]
         lpr:
           enabled: False
+        record:
+          enabled: true
+          retain:
+            days: 7
+            mode: motion
       frigate_tuulitaka:
         ffmpeg:
           inputs:
@@ -190,8 +207,8 @@ data:
           #sync_recordings: True
           enabled: true
           retain:
-            days: 14
-            mode: all
+            days: 7
+            mode: motion
           #events:
             #retain:
               #default: 2
