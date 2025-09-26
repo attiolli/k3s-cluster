@@ -41,7 +41,9 @@ spec:
         enable-real-ip: true
         enable-brotli: "true"
         custom-http-errors: 404,403
-      use-forwarded-headers: "true"
+        compute-full-forwarded-for: 'true'
+        use-forwarded-headers: 'true'
+        proxy-body-size: 0
       service:
         enabled: true
         type: LoadBalancer
