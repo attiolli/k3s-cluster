@@ -52,19 +52,6 @@ data:
       track:
         - person
       filters:
-      # Generate filters from: Webui->Camera->Debug->Mask&ZoneCreator->Add
-        #cat:
-        #  threshold: 0.70
-        #  min_score: 0.6
-        #  mask:
-        #    - 132,499,273,537,282,720,0,720,0,605,0,470
-        #    - 447,0,195,87,260,164,417,154
-        #dog:
-        #  threshold: 0.70
-        #  min_score: 0.6
-        #  mask:
-        #    - 132,499,273,537,282,720,0,720,0,605,0,470
-        #    - 447,0,195,87,260,164,417,154
         person:
           threshold: 0.8
           min_score: 0.6
@@ -79,8 +66,8 @@ data:
         frigate_etupiha_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_ETUPIHA_IP}:554/h264Preview_01_sub"
         frigate_terassi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TERASSI_IP}:554/h264Preview_01_main"
         frigate_terassi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TERASSI_IP}:554/h264Preview_01_sub"
-        #frigate_takaovi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_main"
-        #frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
+        frigate_takaovi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_main"
+        frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
  
     cameras:
       frigate_etuovi:
@@ -129,21 +116,21 @@ data:
           retain:
             days: 14
             mode: motion
-      #frigate_takaovi:
-      #  ffmpeg:
-      #    inputs:
-      #      - path: rtsp://localhost:8554/frigate_takaovi_sub
-      #        roles: ["detect"]
-      #      - path: rtsp://localhost:8554/frigate_takaovi_main
-      #        roles: ["record"]
-      #  detect:
-      #    width: 1280
-      #    height: 720
-      #    fps: 5
-      #  lpr:
-      #    enabled: False
-      #  record:
-      #    enabled: true
-      #    retain:
-      #      days: 14
-      #      mode: motion
+      frigate_takaovi:
+        ffmpeg:
+          inputs:
+            - path: rtsp://localhost:8554/frigate_takaovi_sub
+              roles: ["detect"]
+            - path: rtsp://localhost:8554/frigate_takaovi_main
+              roles: ["record"]
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
+        lpr:
+          enabled: False
+        record:
+          enabled: true
+          retain:
+            days: 14
+            mode: motion
