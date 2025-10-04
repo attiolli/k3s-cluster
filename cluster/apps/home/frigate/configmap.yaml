@@ -128,7 +128,6 @@ data:
           track:
             - person
             - car
-            - license_plate
         detect:
           width: 1280
           height: 720
