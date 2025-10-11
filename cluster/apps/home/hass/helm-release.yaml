@@ -24,6 +24,11 @@ spec:
               repository: ghcr.io/home-assistant/home-assistant
               #tag: 2025.7.4
               tag: 2025.9.4
+            resources:
+              requests:
+                memory: 512M
+              limits:
+                memory: 1.5Gi
             probes: &probes
               liveness:
                 enabled: false
