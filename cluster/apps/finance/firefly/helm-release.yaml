@@ -15,7 +15,7 @@ spec:
     controllers:
       *app :
         initContainers:
-          - name: init-storage
+          init-storage:
             image: busybox:1.36
             command:
               - sh
@@ -24,9 +24,9 @@ spec:
                 mkdir -p /mnt/firefly/upload /mnt/data-importer/importer
                 chown -R 1000:1000 /mnt
             volumeMounts:
-              - name: firefly-main
+              firefly-main:
                 mountPath: /mnt/firefly
-              - name: data-importer-main
+              data-importer-main:
                 mountPath: /mnt/data-importer
         containers:
           main:
