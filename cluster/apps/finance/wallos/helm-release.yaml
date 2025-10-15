@@ -63,7 +63,7 @@ spec:
               - *host
     persistence:
       data:
-        existingClaim: wallos-config-v1
+        existingClaim: *app
         advancedMounts:
           wallos:
             app:
