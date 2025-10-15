@@ -22,6 +22,7 @@ spec:
             command:
               - sh
               - -c
+            args:
               - |
                 mkdir -p /mnt/firefly/upload /mnt/data-importer/importer
                 chown -R 1000:1000 /mnt
