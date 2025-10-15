@@ -16,7 +16,9 @@ spec:
       *app :
         initContainers:
           init-storage:
-            image: busybox:1.36
+            image:
+              repository: docker.io/library/alpine
+              tag: "3.22"
             command:
               - sh
               - -c
