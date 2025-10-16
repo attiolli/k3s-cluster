@@ -54,6 +54,11 @@ spec:
                   secretKeyRef:
                     name: *app
                     key: DB_PASSWORD
+              APP_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: *app
+                    key: APP_KEY
               SEND_ERROR_MESSAGE: "false"
               SEND_REPORT_JOURNALS: "false"
               ENABLE_EXCHANGE_RATES: "true"
