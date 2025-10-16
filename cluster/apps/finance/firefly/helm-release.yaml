@@ -24,13 +24,8 @@ spec:
               - -c
             args:
               - |
-                mkdir -p /mnt/firefly/upload /mnt/data-importer/importer
-                chown -R 1000:1000 /mnt
-            volumeMounts:
-              firefly-main:
-                mountPath: /mnt/firefly
-              data-importer-main:
-                mountPath: /mnt/data-importer
+                mkdir -p /mnt/data/firefly/upload /mnt/data/data-importer/importer
+                chown -R 1000:1000 /mnt/data
         containers:
           main:
             image:
@@ -158,7 +153,9 @@ spec:
 
     persistence:
       data:
-        existingClaim: *app
+        enabled: true
+        type: hostPath
+        hostPath: /mnt/data/firefly
         advancedMounts:
           firefly:
             main:
