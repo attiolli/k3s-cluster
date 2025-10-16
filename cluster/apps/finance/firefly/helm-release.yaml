@@ -16,6 +16,10 @@ spec:
       *app :
         initContainers:
           init-storage:
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              privileged: true
             image:
               repository: docker.io/library/alpine
               tag: "3.22"
@@ -24,7 +28,7 @@ spec:
               - -c
             args:
               - |
-                mkdir -p /mnt/data/firefly/upload /mnt/data/data-importer/importer
+                mkdir -p /mnt/data/firefly/upload /mnt/data/data-importer/importer || true
         containers:
           main:
             image:
