@@ -28,7 +28,7 @@ spec:
               - -c
             args:
               - |
-                mkdir -p /mnt/data/firefly/upload /mnt/data/data-importer/importer || true
+                mkdir -p /mnt/data/firefly/upload || true
         containers:
           main:
             image:
@@ -125,10 +125,6 @@ spec:
             main:
               - subPath: upload
                 path: /var/www/html/storage/upload
-          data-importer:
-            main:
-              - subPath: importer
-                path: /var/www/html/storage/uploads
 
     defaultPodOptions:
       automountServiceAccountToken: false
