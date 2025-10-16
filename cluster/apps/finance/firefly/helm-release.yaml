@@ -80,6 +80,14 @@ spec:
                 enabled: false
               readiness:
                 enabled: false
+        pod:
+          nodeSelector:
+            kubernetes.io/hostname: "k8s-worker6"
+          tolerations:
+            - key: "master"
+              operator: "Equal"
+              value: "false"
+              effect: "NoSchedule"
 
     service:
       *app :
