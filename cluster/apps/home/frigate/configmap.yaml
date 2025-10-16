@@ -51,12 +51,24 @@ data:
       # Optional: list of objects to track from labelmap
       track:
         - person
+        - car
       filters:
         person:
           threshold: 0.8
           min_score: 0.6
           min_area: 5000
           max_area: 100000
+          stationary:
+            threshold: 50
+            max_frames: 300
+        car:
+          threshold: 0.8
+          min_score: 0.6
+          min_area: 5000
+          max_area: 100000
+          stationary:
+            threshold: 50
+            max_frames: 500
     
     go2rtc:
       streams:
@@ -83,6 +95,7 @@ data:
           width: 1280
           height: 720
           fps: 2
+          max_disappeared: 40
         lpr:
           enabled: False
         record:
@@ -98,6 +111,7 @@ data:
           width: 1280
           height: 720
           fps: 5
+          max_disappeared: 40
         lpr:
           enabled: False
       frigate_etupiha:
@@ -115,6 +129,7 @@ data:
           width: 1280
           height: 720
           fps: 5
+          max_disappeared: 40
       frigate_terassi:
         ffmpeg:
           inputs:
@@ -126,6 +141,7 @@ data:
           width: 1280
           height: 720
           fps: 5
+          max_disappeared: 40
         lpr:
           enabled: False
         record:
@@ -144,6 +160,7 @@ data:
           width: 1280
           height: 720
           fps: 5
+          max_disappeared: 40
         lpr:
           enabled: False
         record:
