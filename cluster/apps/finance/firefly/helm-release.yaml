@@ -28,7 +28,9 @@ spec:
               - -c
             args:
               - |
-                mkdir -p /mnt/data/firefly/upload || true
+                set -e
+                mkdir -p /mnt/data/firefly/upload
+                chown -R 1000:1000 /mnt/data/firefly
         containers:
           main:
             image:
