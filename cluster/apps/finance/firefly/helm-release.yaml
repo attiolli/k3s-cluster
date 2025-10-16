@@ -129,15 +129,3 @@ spec:
             main:
               - subPath: upload
                 path: /var/www/html/storage/upload
-
-    defaultPodOptions:
-      automountServiceAccountToken: false
-      enableServiceLinks: false
-      hostUsers: false
-      securityContext:
-        runAsNonRoot: false
-        runAsUser: &uid 33
-        runAsGroup: *uid
-        fsGroup: *uid
-        fsGroupChangePolicy: "OnRootMismatch"
-        seccompProfile: { type: "RuntimeDefault" }
