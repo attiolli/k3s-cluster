@@ -25,7 +25,6 @@ spec:
             args:
               - |
                 mkdir -p /mnt/data/firefly/upload /mnt/data/data-importer/importer
-                chown -R 1000:1000 /mnt/data
         containers:
           main:
             image:
