@@ -10,4 +10,4 @@ resources:
   - home
   - monitoring
   - system-upgrade
-  - finance
+  #- finance
