@@ -89,44 +89,10 @@ spec:
               readiness:
                 enabled: true
 
-      data-importer:
-        containers:
-          main:
-            image:
-              repository: docker.io/fireflyiii/data-importer
-              tag: version-1.6.1@sha256:40e10f996a7bf72285dd6475c49424a02255fb02437904fe2ee6c44bc07e1bfc
-            env:
-              TZ: "${TZ}"
-              APP_ENV: "production"
-              APP_DEBUG: "false"
-              LOG_CHANNEL: "stdout"
-              FIREFLY_III_URL: http://firefly.default.svc.cluster.local
-              VANITY_URL: "https://firefly.${MAIN_DOMAIN}"
-            securityContext: *sc
-            resources:
-              requests:
-                cpu: "10m"
-                memory: "100Mi"
-              limits:
-                cpu: "1"
-                memory: "1Gi"
-            probes:
-              liveness:
-                enabled: true
-              readiness:
-                enabled: true
     service:
       *app :
         forceRename: *app
         controller: *app
-        ports:
-          http:
-            port: 80
-            targetPort: 8080
-            protocol: HTTP
-            appProtocol: http
-      data-importer:
-        controller: data-importer
         ports:
           http:
             port: 80
@@ -140,11 +106,6 @@ spec:
         hosts:
           - host: &host "firefly.${MAIN_DOMAIN}"
             paths:
-              - path: /api
-                pathType: Prefix
-                service:
-                  identifier: *app
-                  port: http
               - path: /
                 pathType: Prefix
                 service:
