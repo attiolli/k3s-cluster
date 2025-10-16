@@ -16,23 +16,6 @@ spec:
       *app :
         annotations:
           reloader.stakater.com/auto: "true"
-        initContainers:
-          init-storage:
-            securityContext:
-              runAsUser: 0
-              runAsGroup: 0
-              privileged: true
-            image:
-              repository: docker.io/library/alpine
-              tag: "3.22"
-            command:
-              - sh
-              - -c
-            args:
-              - |
-                set -e
-                mkdir -p /mnt/data/firefly/upload
-                chown -R 1000:1000 /mnt/data/firefly
         containers:
           main:
             image:
@@ -124,6 +107,7 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /mnt/data/firefly
+        hostPathType: DirectoryOrCreate
         advancedMounts:
           firefly:
             main:
