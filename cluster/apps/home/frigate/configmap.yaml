@@ -32,6 +32,10 @@ data:
     
     detect:
       enabled: true
+      stationary:
+        threshold: 50
+        max_frames:
+          default: 300
     
     record:
       enabled: true
@@ -58,17 +62,11 @@ data:
           min_score: 0.6
           min_area: 5000
           max_area: 100000
-          stationary:
-            threshold: 50
-            max_frames: 300
         car:
           threshold: 0.8
           min_score: 0.6
           min_area: 5000
           max_area: 100000
-          stationary:
-            threshold: 50
-            max_frames: 500
     
     go2rtc:
       streams:
