@@ -14,6 +14,8 @@ spec:
   values:
     controllers:
       *app :
+        annotations:
+          reloader.stakater.com/auto: "true"
         initContainers:
           init-storage:
             securityContext:
@@ -133,7 +135,7 @@ spec:
       enableServiceLinks: false
       hostUsers: false
       securityContext:
-        runAsNonRoot: true
+        runAsNonRoot: false
         runAsUser: &uid 33
         runAsGroup: *uid
         fsGroup: *uid
