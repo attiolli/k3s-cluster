@@ -32,10 +32,6 @@ data:
     
     detect:
       enabled: true
-      stationary:
-        threshold: 50
-        max_frames:
-          default: 300
     
     record:
       enabled: true
