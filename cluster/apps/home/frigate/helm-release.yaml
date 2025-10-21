@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: ghcr.io/blakeblackshear/frigate
-              tag: 0.16.0-beta4
+              tag: 0.16.2@sha256:4041ad318224500cf9513c513b1bb927d9dd252f63bbd3d11c92006c1172c86c
             env:
               TZ: Europe/Helsinki
               LIBVA_DRIVER_NAME: i965
@@ -34,16 +34,16 @@ spec:
               privileged: true
             probes:
               liveness: &probes
-                enabled: false
-                custom: false
+                enabled: true
+                custom: true
                 spec:
                   httpGet:
                     path: /api/version
-                    port: &port 5000
-                  initialDelaySeconds: 10
+                    port: 5000
+                  initialDelaySeconds: 0
                   periodSeconds: 10
-                  timeoutSeconds: 10
-                  failureThreshold: 50
+                  timeoutSeconds: 1
+                  failureThreshold: 3
               readiness: *probes
               startup:
                 enabled: false
@@ -62,7 +62,11 @@ spec:
         controller: frigate
         ports:
           http:
-            port: *port
+            port: &port 5000
+            primary: true
+          go2rtc:
+            enabled: true
+            port: &apiPort 1984
           rtsp:
             port: 8554
 
@@ -101,7 +105,7 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
-        sizeLimit: 1Gi
+        sizeLimit: 4Gi
         globalMounts:
           - path: /dev/shm
       usb:
