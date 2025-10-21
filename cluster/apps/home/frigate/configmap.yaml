@@ -78,20 +78,20 @@ data:
         frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
  
     cameras:
-      frigate_varasto:
-        ffmpeg:
-          inputs:
-            - path: rtsp://localhost:8554/frigate_varasto_sub
-              roles: ["detect"]
-            - path: rtsp://localhost:8554/frigate_varasto_main
-              roles: ["record"]
-        detect:
-          width: 1280
-          height: 720
-          fps: 2
-          max_disappeared: 40
-        record:
-          enabled: false
+      #frigate_varasto:
+      #  ffmpeg:
+      #    inputs:
+      #      - path: rtsp://localhost:8554/frigate_varasto_sub
+      #        roles: ["detect"]
+      #      - path: rtsp://localhost:8554/frigate_varasto_main
+      #        roles: ["record"]
+      #  detect:
+      #    width: 1280
+      #    height: 720
+      #    fps: 2
+      #    max_disappeared: 40
+      #  record:
+      #    enabled: false
       frigate_etuovi:
         ffmpeg:
           inputs:
