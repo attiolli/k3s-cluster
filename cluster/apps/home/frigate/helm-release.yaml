@@ -64,9 +64,6 @@ spec:
           http:
             port: &port 5000
             primary: true
-          go2rtc:
-            enabled: true
-            port: &apiPort 1984
           rtsp:
             port: 8554
 
