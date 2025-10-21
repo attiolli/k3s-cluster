@@ -90,8 +90,6 @@ data:
           height: 720
           fps: 2
           max_disappeared: 40
-        lpr:
-          enabled: False
         record:
           enabled: false
       frigate_etuovi:
@@ -106,8 +104,6 @@ data:
           height: 720
           fps: 5
           max_disappeared: 40
-        lpr:
-          enabled: False
       frigate_etupiha:
         ffmpeg:
           inputs:
@@ -136,8 +132,6 @@ data:
           height: 720
           fps: 5
           max_disappeared: 40
-        lpr:
-          enabled: False
         record:
           enabled: true
           retain:
@@ -155,8 +149,6 @@ data:
           height: 720
           fps: 5
           max_disappeared: 40
-        lpr:
-          enabled: False
         record:
           enabled: true
           retain:
