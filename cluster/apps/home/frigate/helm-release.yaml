@@ -47,8 +47,6 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-            securityContext:
-              privileged: true
 
         pod:
           nodeSelector:
