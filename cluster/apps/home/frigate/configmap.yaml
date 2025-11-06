@@ -5,14 +5,6 @@ metadata:
   namespace: home
 data:
   config.yml: |
-    #logger:
-    #  default: info
-    logger:
-      default: info
-      logs:
-        frigate.mqtt: info
-        frigate.app: debug
-        frigate.event: debug   
     mqtt:
       host: "${SVC_MQTT_ADDR}"
       topic_prefix: frigate
