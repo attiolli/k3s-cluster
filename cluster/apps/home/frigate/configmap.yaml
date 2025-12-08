@@ -58,8 +58,8 @@ data:
     
     go2rtc:
       streams:
-        frigate_varasto_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_VARASTO_IP}:554/ch0_0.h264"
-        frigate_varasto_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_VARASTO_IP}:554/ch0_1.h264"
+        #frigate_varasto_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_VARASTO_IP}:554/ch0_0.h264"
+        #frigate_varasto_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_VARASTO_IP}:554/ch0_1.h264"
         frigate_etuovi_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_ETUOVI_IP}:554/h264Preview_01_main"
         frigate_etuovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_ETUOVI_IP}:554/h264Preview_01_sub"
         frigate_etupiha_main: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_ETUPIHA_IP}:554/h264Preview_01_main"
@@ -70,21 +70,21 @@ data:
         #frigate_takaovi_sub: "rtsp://${CAMERA_USERNAME}:${CAMERA_PASSWORD}@${CAMERA_TAKAOVI_IP}:554/h264Preview_01_sub"
  
     cameras:
-      frigate_varasto:
-        ffmpeg:
-          inputs:
-            - path: rtsp://localhost:8554/frigate_varasto_sub
-              roles: ["detect"]
-            - path: rtsp://localhost:8554/frigate_varasto_main
-              roles: ["record"]
-        detect:
-          width: 1280
-          height: 720
-          fps: 2
-        lpr:
-          enabled: False
-        record:
-          enabled: false
+      #frigate_varasto:
+      #  ffmpeg:
+      #    inputs:
+      #      - path: rtsp://localhost:8554/frigate_varasto_sub
+      #        roles: ["detect"]
+      #      - path: rtsp://localhost:8554/frigate_varasto_main
+      #        roles: ["record"]
+      #  detect:
+      #    width: 1280
+      #    height: 720
+      #    fps: 2
+      #  lpr:
+      #    enabled: False
+      #  record:
+      #    enabled: false
       frigate_etuovi:
         ffmpeg:
           inputs:
