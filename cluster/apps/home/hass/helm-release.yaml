@@ -39,7 +39,7 @@ spec:
           code:
             image:
               repository: ghcr.io/coder/code-server
-              tag: 4.106.3
+              tag: 4.107.0
             env:
               TZ: Europe/Helsinki
             securityContext:
