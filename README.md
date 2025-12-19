@@ -21,12 +21,12 @@ cluster
 
 Node   | Hostname | RAM | Storage | Function | OS
 ------ | -------- | --- | ------- | -------- | --
-Raspberry CM5 | k8s-master1 | 8GB | 250GB NVMe | Kube Master | Debian 12
-Raspberry CM5 | k8s-worker4 | 8GB | 120GB NVMe | Kube Worker | Debian 12
-Raspberry CM5 | k8s-worker5 | 8GB | 120GB NVMe | Kube Worker | Debian 12
-Raspberry CM5 | k8s-worker6 | 8GB | 120GB NVMe | Kube Worker | Debian 12
+Raspberry CM5 | k8s-master1 | 8GB | 250GB NVMe | Kube Master | Debian 13
+Raspberry CM5 | k8s-worker4 | 8GB | 120GB NVMe | Kube Worker | Debian 13
+Raspberry CM5 | k8s-worker5 | 8GB | 120GB NVMe | Kube Worker | Debian 13
+Raspberry CM5 | k8s-worker6 | 8GB | 120GB NVMe | Kube Worker | Debian 13
 
 ## Storage ##
 Node   | Hostname | RAM | Storage | Function | OS
 ------ | -------- | --- | ------- | -------- | --
-Raspberry CM5 | nas3 | 8GB | 1x120GB NVMe, 1x10TB HDD | NFS Server | Debian 12
+Raspberry CM5 | nas3 | 8GB | 1x120GB NVMe, 1x10TB HDD | NFS Server | Debian 13
