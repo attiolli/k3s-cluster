@@ -58,10 +58,10 @@ spec:
       enabled: true
       ingressClassName: "nginx"
       hosts:
-        - "grafana.${MAIN_DOMAIN}"
+        - "loki.${MAIN_DOMAIN}"
       tls:
         - hosts:
-            - "grafana.${MAIN_DOMAIN}"
+            - "loki.${MAIN_DOMAIN}"
     
     singleBinary:
       replicas: 1
