@@ -9,4 +9,4 @@ resources:
   - syslog
   - influxdb
   - snmp-exporter
-  #- loki
+  - loki
