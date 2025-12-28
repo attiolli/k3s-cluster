@@ -99,6 +99,14 @@ spec:
             jsonData:
               organization: default
               tlsSkipVerify: true
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://loki.monitoring.svc.cluster.local:3100
+            jsonData:
+              maxLines: 1000
+            version: 1
+            editable: true
     dashboards:
       default:
         snmp:
