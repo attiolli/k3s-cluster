@@ -89,7 +89,7 @@ discovery.relabel "pod_logs" {
 loki.source.kubernetes "pod_logs" {
   targets     = discovery.relabel.pod_logs.output
   forward_to  = [loki.process.pod_logs.receiver]
-  ignore_older = "1h"   # skips files older than 1 hour
+  ignore_older = "1h"
 }
 
 // loki.process receives log entries from other Loki components, applies one or more processing stages,
