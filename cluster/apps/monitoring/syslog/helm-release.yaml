@@ -19,7 +19,7 @@ spec:
           app:
             image:
               repository: ghcr.io/linuxserver/syslog-ng
-              tag: 4.8.3
+              tag: 4.10.2
               pullPolicy: IfNotPresent
             securityContext:
               runAsUser: 0
