@@ -27,7 +27,7 @@ spec:
               pullPolicy: Always
             env:
               TZ: "${TZ}"
-              MODBUS_DEBUG: yes
+              MODBUS_DEBUG: no
               MODBUS_MQTT_BROKER: "${SVC_MQTT_ADDR}"
               MODBUS_MQTT_USERNAME:
                 valueFrom:
