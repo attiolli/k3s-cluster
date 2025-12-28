@@ -23,7 +23,7 @@ spec:
               #repository: vaizki/modbus2x
               #tag: 75d196e
               repository: attley86/modbus2x
-              tag: dev
+              tag: main
               pullPolicy: Always
             env:
               TZ: "${TZ}"
