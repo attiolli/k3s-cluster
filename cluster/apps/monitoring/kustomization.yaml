@@ -10,3 +10,4 @@ resources:
   - influxdb
   - snmp-exporter
   - loki
+  - alloy
