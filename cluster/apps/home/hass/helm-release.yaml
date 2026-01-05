@@ -35,26 +35,26 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-          code:
-            image:
-              repository: ghcr.io/coder/code-server
-              tag: 4.107.0
-            env:
-              TZ: Europe/Helsinki
-            securityContext:
-              runAsUser: 0
-              runAsGroup: 0
-              runAsNonRoot: false
-            workingDir: /config
-            args:
-              - --auth
-              - "none"
-              - --user-data-dir
-              - "/config/.vscode"
-              - --extensions-dir
-              - "/config/.vscode"
-              - "/config"
-            probes: *probes
+          # code:
+          #   image:
+          #     repository: ghcr.io/coder/code-server
+          #     tag: 4.107.0
+          #   env:
+          #     TZ: Europe/Helsinki
+          #   securityContext:
+          #     runAsUser: 0
+          #     runAsGroup: 0
+          #     runAsNonRoot: false
+          #   workingDir: /config
+          #   args:
+          #     - --auth
+          #     - "none"
+          #     - --user-data-dir
+          #     - "/config/.vscode"
+          #     - --extensions-dir
+          #     - "/config/.vscode"
+          #     - "/config"
+          #   probes: *probes
 
         pod:
           nodeSelector:
@@ -71,11 +71,11 @@ spec:
         ports:
           http:
             port: 8123
-      code:
-        controller: hass
-        ports:
-          code:
-            port: 8080
+      # code:
+      #   controller: hass
+      #   ports:
+      #     code:
+      #       port: 8080
 
     ingress:
       app:
@@ -92,24 +92,24 @@ spec:
         tls:
           - hosts:
               - *host
-      code:
-        enabled: true
-        annotations:
-          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-          nginx.ingress.kubernetes.io/auth-type: basic
-          nginx.ingress.kubernetes.io/auth-secret: basic-auth
-          nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
-        className: nginx
-        hosts:
-          - host: &code-host "hasscode.${MAIN_DOMAIN}"
-            paths:
-              - path: /
-                service:
-                  identifier: code
-                  port: code
-        tls:
-          - hosts:
-              - *code-host
+      # code:
+      #   enabled: true
+      #   annotations:
+      #     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      #     nginx.ingress.kubernetes.io/auth-type: basic
+      #     nginx.ingress.kubernetes.io/auth-secret: basic-auth
+      #     nginx.ingress.kubernetes.io/auth-realm: "Authentication required"
+      #   className: nginx
+      #   hosts:
+      #     - host: &code-host "hasscode.${MAIN_DOMAIN}"
+      #       paths:
+      #         - path: /
+      #           service:
+      #             identifier: code
+      #             port: code
+      #   tls:
+      #     - hosts:
+      #         - *code-host
 
 
     persistence:
