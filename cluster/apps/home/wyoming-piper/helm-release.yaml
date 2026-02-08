@@ -22,7 +22,7 @@ spec:
           app:
             image:
               repository: rhasspy/wyoming-piper
-              tag: 2.1.2
+              tag: 2.2.2
             args:
               - --voice
               - fi_FI-harri-medium
