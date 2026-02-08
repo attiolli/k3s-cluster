@@ -8,8 +8,8 @@
   schedule: [
     'after 11pm every weekday',
     'before 6am every weekday',
-    'after 11pm every weekend',
-    'before 6am every weekend',
+    'after 12am every weekend',
+    'before 6pm every weekend',
   ],
   timezone: 'Europe/Helsinki',
   prHourlyLimit: 5,
