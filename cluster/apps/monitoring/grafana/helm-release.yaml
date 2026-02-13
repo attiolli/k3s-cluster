@@ -43,6 +43,8 @@ spec:
           name: k8s
       server:
         root_url: "https://grafana.${MAIN_DOMAIN}"
+      defaults:
+        default_timezone: browser
       paths:
         data: /var/lib/grafana/data
         logs: /var/log/grafana
