@@ -96,6 +96,7 @@ spec:
     grafana:
       enabled: false
       forceDeployDashboards: true
+      defaultDashboardsTimezone: ""
       sidecar:
         dashboards:
           annotations:
