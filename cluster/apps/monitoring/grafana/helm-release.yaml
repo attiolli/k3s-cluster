@@ -40,8 +40,6 @@ spec:
       orgs:
         - id: 1
           name: Main Org.
-        - id: 2
-          name: k8s
       server:
         root_url: "https://grafana.${MAIN_DOMAIN}"
       defaults:
@@ -80,13 +78,13 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/default
-          - name: "k8s"
-            folder: "k8s"
+          - name: flux
+            folder: Flux
             type: file
             disableDeletion: false
             editable: true
             options:
-              path: /var/lib/grafana/dashboards/k8s
+              path: /var/lib/grafana/dashboards/flux
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -116,13 +114,15 @@ spec:
         snmp:
           url: https://raw.githubusercontent.com/attiolli/k3s-cluster/main/cluster/apps/monitoring/grafana/dashboards/snmp_exporter.json
           datasource: Prometheus
-      k8s:
-        #Ref: https://grafana.com/grafana/dashboards/2842
+      flux:
         flux-cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/dashboards/cluster.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
           datasource: Prometheus
         flux-control-plane:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/dashboards/control-plane.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
+          datasource: Prometheus
+        flux-logs:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
           datasource: Prometheus
     sidecar:
       dashboards:
