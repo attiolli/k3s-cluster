@@ -2,7 +2,7 @@
 
 ## Structure ##
 
-The Git repository contains the following directories under cluster.
+The Git repository contains the following directories under cluster:
 
 * Flux directory is the entrypoint to Flux
 * Config directory is for cluster config files
